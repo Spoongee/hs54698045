@@ -136,7 +136,7 @@
 	screenOverPlayerAlpha: 50,
 	useLinearFiltering: true,
 	useAnisotropicFiltering: true,
-	hideHandsInFirstPerson: true,
+	hideHandsInFirstPerson: false,
 	hideShieldInFirstPerson: true,
 	armSwing: false,
 	handPokeAnimation: true,
