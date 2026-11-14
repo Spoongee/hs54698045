@@ -1,0 +1,9 @@
+#With JourneyMap, FTB Chunks or Xaero's Minimap, the Chronicle's atlas shows up on that map as Opus's own
+#waypoints: never saved among your own, given again each time you join. Without any of them this does nothing.
+[map]
+	#Where the ring points: your next task, or the seat of your people.
+	task = true
+	#The seats of the rulers and of your own people, once found.
+	seats = true
+	#Every settlement, camp and stronghold found.
+	places = true

@@ -1,0 +1,204 @@
+{
+  // Absolute AFK Cinema - cinematic idle camera
+  "general": {
+    // Master switch. When false the camera never starts on its own (the key binding still works).
+    "enabled": true,
+    // Seconds without mouse or keyboard input before the cinema starts. Range: 3 ~ 3600
+    "idleSeconds": 30,
+    // Show a short toast when the cinema starts.
+    "showStartMessage": true,
+    // What a hit does. IGNORE = the show carries on, STOP = the view is handed back, PAUSE = handed back and the game menu opens as well, so you are not eaten while away. PAUSE only stops the world in single player; on a server nothing can pause but you. Allowed: IGNORE, STOP, PAUSE
+    "onDamage": "IGNORE",
+    // End the show when a hostile mob comes close enough to be a problem.
+    "interruptOnMonster": false,
+    // End the show when another player comes this close, in blocks. 0 = never. Range: 0 ~ 64
+    "interruptOnPlayerWithin": 0,
+    // Hand the view back by itself after this many shots. 0 = keep going for as long as you are away. Range: 0 ~ 500
+    "maxShots": 0,
+    // Only start while the game window has focus.
+    "onlyWhenWindowFocused": false,
+    // While attack or use is held down you count as active, for farms where you hold a click. Turn this off for an AFK fishing farm with the button pressed down.
+    "heldButtonCounts": true,
+    // Also start while an inventory, chest, furnace or similar is open. The screen is only hidden, never closed, so it is still there when you come back.
+    "whileInventoryOpen": true,
+    // Show an "AFK Cinema" button in the game menu.
+    "pauseMenuButton": true
+  },
+  // How the shots look
+  "look": {
+    // Shortest single shot in seconds. Range: 2 ~ 120
+    "minShotSeconds": 6,
+    // Longest single shot in seconds. Range: 2 ~ 120
+    "maxShotSeconds": 11,
+    // How shots are joined: CUT, FADE through black, or MIXED (mostly cuts, a fade now and then). Allowed: CUT, FADE, MIXED
+    "transition": "MIXED",
+    // How the camera hands the view back when you come back: INSTANT, FADE through black, FLY around you and in from behind, or DIVE - pull up into the sky and drop back into your head. Allowed: INSTANT, FADE, FLY, DIVE
+    "returnStyle": "FLY",
+    // How long that hand-back takes, in milliseconds. 0 is the same as INSTANT. Range: 0 ~ 8000
+    "returnMillis": 2600,
+    // Draw black cinema bars at the top and bottom.
+    "letterbox": true,
+    // Height of each bar as a fraction of the screen height. Range: 0.0 ~ 0.3
+    "letterboxHeight": 0.11,
+    // Hide the HUD (hotbar, health, crosshair, mod overlays) while the cinema runs.
+    "hideHud": true,
+    // Hide the chat while the cinema runs (only matters when hideHud is false).
+    "hideChat": true,
+    // Hide the nametags above players, mobs and named vehicles while the cinema runs.
+    "hideNametags": true,
+    // Allow a slight dutch angle (camera roll) on some shots.
+    "allowRoll": true,
+    // Allow slow zooms (field-of-view changes) during shots.
+    "allowZoom": true,
+    // Multiplier for how far the camera stays from its subject. 1.0 = default framing. Range: 0.5 ~ 3.0
+    "distanceScale": 1.0,
+    // How much zoom-driven shots are preferred over plain camera moves. 1.0 = equal, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "zoomBias": 1.6,
+    // How fast every camera move runs. 0.5 is half speed and twice as long, 2.0 is twice as fast. Shot length follows. Range: 0.4 ~ 2.5
+    "cameraSpeed": 1.0,
+    // One dial instead of nine weights: 0.0 films your world - places, vistas, machines - and 1.0 films the living. 0.5 leaves the weights under targets exactly as they are. Range: 0.0 ~ 1.0
+    "subjectMix": 0.5
+  },
+  // The show as a cut film rather than a row of shots
+  "director": {
+    // Plan the shots in arcs - arrive wide, look closer, be there, pull away - instead of picking each one on its own.
+    "director": true,
+    // A quiet line at the start: the day, where you are, what time it is.
+    "titleCard": true,
+    // A short card when you come back: how long you were away, how many shots, who was in them.
+    "endCard": true,
+    // Save a few still frames of the best-framed moments to screenshots/afk-cinema. Nothing is sent anywhere; they are ordinary screenshot files.
+    "bestFrames": true,
+    // At most this many stills per show. Range: 1 ~ 40
+    "bestFramesPerShow": 6
+  },
+  // Soundtrack
+  "music": {
+    // Play a soundtrack while the cinema runs (vanilla music pauses meanwhile). Uses the Music volume slider.
+    "enabled": true,
+    // Soundtrack volume on top of the Music slider. Range: 0.0 ~ 1.0
+    "volume": 0.7,
+    // Where the soundtrack comes from. OWN = only your own files in config/absoluteafkcinema/music (.ogg, .mp3, .wav, .flac, .opus, .weba, .aiff, .au - no converting needed), BUNDLED = only the three pieces that ship with the mod, MIXED = both, PLAYLIST = only the one named below, SCENE = the playlist that fits where you are - night, dawn, cave, nether, end. With no files of your own, they all behave the same. Allowed: OWN, BUNDLED, MIXED, PLAYLIST, SCENE
+    "source": "MIXED",
+    // Let the game's own music discs join the soundtrack as well.
+    "musicDiscs": false,
+    // Which playlist to play when source is PLAYLIST. A subfolder of the music folder is a playlist, and so is an .m3u file in it - an .m3u may point at files anywhere on your computer, so your own collection can be played where it lies. Empty means every track there is. Several names may be written here, and then all of them are played.
+    "playlists": [],
+    // Only for source = SCENE, and only needed when your playlists are named something else. A playlist called night is already played at night, and the same goes for dawn, day, dusk, cave, deep dark, nether and end. To point one of those at a list of your own, write it as "night = Dark Ambient". Where nothing fits, every track is played.
+    "scenePlaylists": []
+  },
+  // What the camera looks at. Weights are relative; 0 disables a category.
+  "targets": {
+    // Radius in blocks around the player that is searched for subjects. Range: 8 ~ 96
+    "searchRadius": 32,
+    // The player themself. Range: 0.0 ~ 100.0
+    "weightSelf": 4.0,
+    // Other players. Range: 0.0 ~ 100.0
+    "weightPlayers": 10.0,
+    // Villagers and traders. Range: 0.0 ~ 100.0
+    "weightVillagers": 6.0,
+    // Animals; herds score higher. Range: 0.0 ~ 100.0
+    "weightAnimals": 3.0,
+    // Hostile mobs. Range: 0.0 ~ 100.0
+    "weightMonsters": 3.5,
+    // Everything alive that is not a player, villager, animal or monster (golems, allays, modded creatures...). Range: 0.0 ~ 100.0
+    "weightOtherMobs": 2.0,
+    // Interesting blocks: lava, fire, campfires, beacons, portals, bells, lights at night, machines with block entities... Range: 0.0 ~ 100.0
+    "weightBlocks": 2.0,
+    // Vehicles you can sit in - cars, trucks, planes, boats, anything a mod adds that is big, lifeless and rideable. They get camera moves of their own: along the flank at wheel height, in over the bonnet, a slow turn around it. Sitting in one counts triple. Range: 0.0 ~ 100.0
+    "weightVehicles": 12.0,
+    // Wide landscape reveals when the player has a long line of sight. Range: 0.0 ~ 100.0
+    "weightVista": 3.0,
+    // How many random block positions are tested per shot when looking for interesting blocks. Range: 0 ~ 2000
+    "blockSamples": 250,
+    // Avoid showing the same subject again for this many shots. Range: 0 ~ 20
+    "rememberTargets": 3,
+    // Entity ids the camera never films.
+    "entityBlacklist": ["minecraft:bat","minecraft:silverfish","minecraft:endermite","minecraft:phantom"]
+  },
+  // How often each camera move is picked. 1.0 = as the mod has it, 0 = never.
+  "shots": {
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "orbit": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "pushIn": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "lowAngle": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "flyBy": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "crane": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "tracking": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "topDown": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "overShoulder": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "goldenHour": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "sky": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "helix": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "worm": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "lavaSweep": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "ceilingDrop": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "voidEdge": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "crawl": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "starfield": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "sunrise": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "moon": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "reflection": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "whip": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "staticZoom": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "dollyZoom": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "pullAway": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "closeUp": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "breathing": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "riseZoom": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "slideZoom": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "arcZoom": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "rimRun": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "threeQuarter": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "hood": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "vehicleOrbit": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "vehicleLift": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "chase": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "passBy": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "bodySweep": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "headlights": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "rearSweep": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "vista": 1.0,
+    // How often this shot is picked, compared to normal. 1.0 = unchanged, 0 = never, 2.0 = twice as often. Range: 0.0 ~ 5.0
+    "horizonPan": 1.0
+  }
+}

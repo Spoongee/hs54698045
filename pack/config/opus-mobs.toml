@@ -1,0 +1,1286 @@
+#Vaskars Opus - every mob, one section each. The defaults are the numbers the mod is made with.
+#Kept with each world (serverconfig/); put a copy in defaultconfigs/ for every new world. A server sends
+#it to whoever joins. In game: Mods > Vaskars Opus > Config.
+#
+#  spawning  false: no new ones come into the world - not by themselves, not in their places or parties,
+#            not from eggs or /summon. Turning off a person a story or task needs (a ruler, Dorn, Elster,
+#            Nal, the informant, Master Voss) leaves that story without them.
+#  health    their full health in half-hearts.
+#  damage    the weight of their blows: everything they do - weapons, arrows, spells, a great beast's
+#            attacks - is scaled by this over the default.
+#  armor     armor points; for people on top of what they wear.
+#  speed     how fast they walk (the game's movement speed: a zombie has 0.23).
+#  weight, minGroup, maxGroup, biomes   for the animals that come of themselves: how often, how many and where.
+#
+#Health, armor and speed are laid on whenever a mob comes into the world, so a change reaches the ones
+#already there the next time they are loaded. Spawn weights take effect when the world is next opened.
+[global]
+	#Every Opus mob's health is multiplied by this, on top of its own setting.
+	#Range: 0.05 ~ 20.0
+	healthMultiplier = 1.0
+	#Every Opus mob's damage is multiplied by this, on top of its own setting.
+	#Range: 0.0 ~ 20.0
+	damageMultiplier = 1.0
+
+#The wild wargs that hunt at night under the open sky, and the ones the orcs ride.
+[warg]
+	#Whether new ones come into the world.
+	spawning = true
+	#Full health, in half-hearts.
+	#Range: 1.0 ~ 4096.0
+	health = 40.0
+	#The weight of their blows; everything they do is scaled by it over the default.
+	#Range: 0.0 ~ 1024.0
+	damage = 7.0
+	#Armor points.
+	#Range: 0.0 ~ 30.0
+	armor = 2.0
+	#How fast they walk (a zombie has 0.23).
+	#Range: 0.01 ~ 2.0
+	speed = 0.32
+	#How often wild wargs come against the other night monsters (a zombie has 100). 0 for never.
+	#Range: 0 ~ 1000
+	weight = 12
+	#Smallest pack.
+	#Range: 1 ~ 16
+	minGroup = 1
+	#Largest pack (never below minGroup).
+	#Range: 1 ~ 16
+	maxGroup = 3
+
+#Master Brann. The great beasts are set in the Bestiary's config now.
+[beasts]
+
+	#Master Brann, the smith under the hill. He does not fight, so he has no damage.
+	[beasts.brann]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 40.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.25
+
+#The rulers whose seats are the boss fights, and Master Voss of the Guild.
+[rulers]
+
+	[rulers.chief_grukk]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 320.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 4.0
+		#Armor points, on top of what they wear.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.3
+
+	[rulers.dwarf_king]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 260.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 4.0
+		#Armor points, on top of what they wear.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.26
+
+	[rulers.elf_queen]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 220.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 1.0
+		#Armor points, on top of what they wear.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.3
+
+	[rulers.ember_king]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 280.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 4.0
+		#Armor points, on top of what they wear.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.3
+
+	[rulers.high_seer]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 240.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 1.0
+		#Armor points, on top of what they wear.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.3
+
+	[rulers.lord_barrow]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 240.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 3.0
+		#Armor points, on top of what they wear.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.27
+
+	[rulers.master_voss]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 200.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 3.0
+		#Armor points, on top of what they wear.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.29
+
+#The people by side: villagers, soldiers, raiders, mages. The leader of a bounty gets 1.6 times their
+#role's health, a champion 2.2 times, on top of this.
+[people]
+
+		[people.village.farmer]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 16.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.3
+
+		[people.guild.guild_alchemist]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 18.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.29
+
+		[people.guild.guild_engineer]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 18.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.28
+
+		[people.guild.guild_guard]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 26.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.3
+
+		[people.guild.merchant]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 16.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.28
+
+		[people.guild.voss_double]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 6.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.5
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.3
+
+		[people.dwarves.dorn]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 20.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.27
+
+		[people.dwarves.dwarf_ancestor]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 70.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 5.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.27
+
+		[people.dwarves.dwarf_engineer]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 34.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 2.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.25
+
+		[people.dwarves.dwarf_general]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 130.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 4.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.27
+
+		[people.dwarves.dwarf_ironbreaker]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 46.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 2.5
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.25
+
+		[people.dwarves.dwarf_miner]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 20.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.27
+
+		[people.dwarves.dwarf_runesmith]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 26.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.26
+
+		[people.dwarves.dwarf_thane]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 120.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 3.5
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.26
+
+		[people.dwarves.dwarf_warrior]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 32.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 2.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.27
+
+		[people.elves.elf_captain]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 40.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 2.5
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.33
+
+		[people.elves.elf_druid]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 20.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.3
+
+		[people.elves.elf_general]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 100.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 4.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.3
+
+		[people.elves.elf_ranger]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 20.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.33
+
+		[people.elves.elf_warden]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 26.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.5
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.32
+
+		[people.barrow.barrow_archer]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 20.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.3
+
+		[people.barrow.barrow_commander]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 44.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 2.5
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.3
+
+		[people.barrow.barrow_general]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 100.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 4.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.3
+
+		[people.barrow.barrow_knight]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 34.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 2.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.28
+
+		[people.barrow.barrow_mage]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 20.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.28
+
+		[people.barrow.barrow_soldier]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 24.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.3
+
+		[people.tusk.tusk_general]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 100.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 4.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.3
+
+		[people.tusk.tusk_hunter]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 22.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.31
+
+		[people.tusk.tusk_raider]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 26.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.32
+
+		[people.tusk.tusk_shaman]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 24.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.29
+
+		[people.tusk.tusk_warlord]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 55.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 3.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.3
+
+		[people.tusk.tusk_warrior]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 36.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 2.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.29
+
+		[people.herders.herder_shaman]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 22.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.28
+
+		[people.herders.orc_herder]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 22.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.3
+
+		[people.bandit.bandit]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 20.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.32
+
+		[people.bandit.bandit_archer]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 18.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.32
+
+		[people.bandit.elster]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 60.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 3.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.32
+
+		[people.bandit.nal]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 36.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 2.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.27
+
+		[people.ashen.ashen_pyromancer]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 26.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.3
+
+		[people.ashen.ashen_warlord]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 60.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 3.5
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.3
+
+		[people.ashen.ashen_warrior]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 32.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 2.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.31
+
+		[people.ashen.ember_smith]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 50.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 3.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.28
+
+		[people.ashen.ashen_general]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 100.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 4.5
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.3
+
+		[people.voidborn.void_elder]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 55.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.3
+
+		[people.voidborn.void_general]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 110.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 4.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.31
+
+		[people.voidborn.void_seer]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 26.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.3
+
+		[people.voidborn.void_sentinel]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 34.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 2.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.32
+
+		[people.voidborn.seer_double]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 6.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 0.5
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.3
+
+	[people.undead]
+		#Whether the risen come up by themselves in the dark of the overworld at all.
+		spawning = true
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 30
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 1
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 2
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (minecraft:nether_wastes 5 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["#minecraft:is_overworld"]
+
+		[people.undead.undead_human]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 22.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.23
+
+		[people.undead.undead_orc]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 30.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 2.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.22
+
+		[people.undead.undead_elf]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 18.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.25
+
+		[people.undead.undead_dwarf]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 28.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.5
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.21
+
+		[people.free.adventurer]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 24.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.31
+
+		[people.free.informant]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 24.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 1.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.31
+
+		[people.free.wanderer]
+			#Whether new ones come into the world.
+			spawning = true
+			#Full health, in half-hearts.
+			#Range: 1.0 ~ 4096.0
+			health = 120.0
+			#The weight of their blows; everything they do is scaled by it over the default.
+			#Range: 0.0 ~ 1024.0
+			damage = 2.0
+			#Armor points, on top of what they wear.
+			#Range: 0.0 ~ 30.0
+			armor = 0.0
+			#How fast they walk (a zombie has 0.23).
+			#Range: 0.01 ~ 2.0
+			speed = 0.26
+
+#The parties on the roads, sent out now and then near a player. weight: how often this kind comes against
+#the others; size: how many of each kind of member go with the leader, times this (the leader always goes).
+#A member whose role is turned off stays at home; a party whose leader is, does not go out.
+[parties]
+
+	[parties.tusk_warband]
+		#Whether this kind goes out at all.
+		spawning = true
+		#How often this kind goes out against the others.
+		#Range: 0 ~ 1000
+		weight = 5
+		#How many go with the leader, times this.
+		#Range: 0.0 ~ 4.0
+		size = 1.0
+
+	[parties.barrow_patrol]
+		#Whether this kind goes out at all.
+		spawning = true
+		#How often this kind goes out against the others.
+		#Range: 0 ~ 1000
+		weight = 5
+		#How many go with the leader, times this.
+		#Range: 0.0 ~ 4.0
+		size = 1.0
+
+	[parties.bandits]
+		#Whether this kind goes out at all.
+		spawning = true
+		#How often this kind goes out against the others.
+		#Range: 0 ~ 1000
+		weight = 4
+		#How many go with the leader, times this.
+		#Range: 0.0 ~ 4.0
+		size = 1.0
+
+	[parties.guild_caravan]
+		#Whether this kind goes out at all.
+		spawning = true
+		#How often this kind goes out against the others.
+		#Range: 0 ~ 1000
+		weight = 3
+		#How many go with the leader, times this.
+		#Range: 0.0 ~ 4.0
+		size = 1.0
+
+	[parties.trader]
+		#Whether this kind goes out at all.
+		spawning = true
+		#How often this kind goes out against the others.
+		#Range: 0 ~ 1000
+		weight = 5
+		#How many go with the leader, times this.
+		#Range: 0.0 ~ 4.0
+		size = 1.0
+
+	[parties.adventurers]
+		#Whether this kind goes out at all.
+		spawning = true
+		#How often this kind goes out against the others.
+		#Range: 0 ~ 1000
+		weight = 4
+		#How many go with the leader, times this.
+		#Range: 0.0 ~ 4.0
+		size = 1.0
+
+	[parties.beggar]
+		#Whether this kind goes out at all.
+		spawning = true
+		#How often this kind goes out against the others.
+		#Range: 0 ~ 1000
+		weight = 2
+		#How many go with the leader, times this.
+		#Range: 0.0 ~ 4.0
+		size = 1.0
+
+	[parties.noble_retinue]
+		#Whether this kind goes out at all.
+		spawning = true
+		#How often this kind goes out against the others.
+		#Range: 0 ~ 1000
+		weight = 2
+		#How many go with the leader, times this.
+		#Range: 0.0 ~ 4.0
+		size = 1.0
+
+	[parties.arms_dealer]
+		#Whether this kind goes out at all.
+		spawning = true
+		#How often this kind goes out against the others.
+		#Range: 0 ~ 1000
+		weight = 2
+		#How many go with the leader, times this.
+		#Range: 0.0 ~ 4.0
+		size = 1.0
+
+	[parties.elf_hunters]
+		#Whether this kind goes out at all.
+		spawning = true
+		#How often this kind goes out against the others.
+		#Range: 0 ~ 1000
+		weight = 3
+		#How many go with the leader, times this.
+		#Range: 0.0 ~ 4.0
+		size = 1.0
+
+	[parties.barrow_riders]
+		#Whether this kind goes out at all.
+		spawning = true
+		#How often this kind goes out against the others.
+		#Range: 0 ~ 1000
+		weight = 4
+		#How many go with the leader, times this.
+		#Range: 0.0 ~ 4.0
+		size = 1.0
+
+	[parties.tusk_riders]
+		#Whether this kind goes out at all.
+		spawning = true
+		#How often this kind goes out against the others.
+		#Range: 0 ~ 1000
+		weight = 4
+		#How many go with the leader, times this.
+		#Range: 0.0 ~ 4.0
+		size = 1.0
+
+	[parties.herder_drove]
+		#Whether this kind goes out at all.
+		spawning = true
+		#How often this kind goes out against the others.
+		#Range: 0 ~ 1000
+		weight = 2
+		#How many go with the leader, times this.
+		#Range: 0.0 ~ 4.0
+		size = 1.0
+
+	[parties.tusk_foot]
+		#Whether this kind goes out at all.
+		spawning = true
+		#How often this kind goes out against the others.
+		#Range: 0 ~ 1000
+		weight = 3
+		#How many go with the leader, times this.
+		#Range: 0.0 ~ 4.0
+		size = 1.0
+
+	[parties.tusk_host]
+		#Whether this kind goes out at all.
+		spawning = true
+		#How often this kind goes out against the others.
+		#Range: 0 ~ 1000
+		weight = 1
+		#How many go with the leader, times this.
+		#Range: 0.0 ~ 4.0
+		size = 1.0
+
+	[parties.barrow_host]
+		#Whether this kind goes out at all.
+		spawning = true
+		#How often this kind goes out against the others.
+		#Range: 0 ~ 1000
+		weight = 1
+		#How many go with the leader, times this.
+		#Range: 0.0 ~ 4.0
+		size = 1.0
+
+	[parties.elf_host]
+		#Whether this kind goes out at all.
+		spawning = true
+		#How often this kind goes out against the others.
+		#Range: 0 ~ 1000
+		weight = 1
+		#How many go with the leader, times this.
+		#Range: 0.0 ~ 4.0
+		size = 1.0
+
+	[parties.ashen_host]
+		#Whether this kind goes out at all.
+		spawning = true
+		#How often this kind goes out against the others.
+		#Range: 0 ~ 1000
+		weight = 1
+		#How many go with the leader, times this.
+		#Range: 0.0 ~ 4.0
+		size = 1.0
+
+	[parties.dwarf_host]
+		#Whether this kind goes out at all.
+		spawning = true
+		#How often this kind goes out against the others.
+		#Range: 0 ~ 1000
+		weight = 1
+		#How many go with the leader, times this.
+		#Range: 0.0 ~ 4.0
+		size = 1.0
+
+	[parties.barrow_column]
+		#Whether this kind goes out at all.
+		spawning = true
+		#How often this kind goes out against the others.
+		#Range: 0 ~ 1000
+		weight = 3
+		#How many go with the leader, times this.
+		#Range: 0.0 ~ 4.0
+		size = 1.0

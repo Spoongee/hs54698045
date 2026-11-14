@@ -1,0 +1,1161 @@
+#Vaskars Bestiary - every creature, one section each. The defaults are the numbers the mod is made with.
+#Kept with each world (serverconfig/); put a copy in defaultconfigs/ for every new world. A server sends
+#it to whoever joins. In game: Mods > Vaskars Bestiary > Config.
+#
+#  spawning  false: no new ones come into the world - not in their clearings and lairs, not again after one
+#            is killed, not from eggs or /summon.
+#  health    their full health in half-hearts.
+#  damage    the weight of their blows: everything they do is scaled by this over the default.
+#  armor     armor points.
+#  speed     how fast they walk (the game's movement speed: a zombie has 0.23).
+#  weight, minGroup, maxGroup, biomes   for the ones that come of themselves: how often, how many and where.
+#            These take effect when the world is next opened.
+#
+#The Skarrn's health_multiplier and damage_multiplier in skarrn-common.toml still count, on top of this.
+[global]
+	#Every creature's health is multiplied by this, on top of its own setting.
+	#Range: 0.05 ~ 20.0
+	healthMultiplier = 1.0
+	#Every creature's damage is multiplied by this, on top of its own setting.
+	#Range: 0.0 ~ 20.0
+	damageMultiplier = 1.0
+
+#The lightning stag of the burnt clearings.
+[stag]
+
+	[stag.skarrn]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 288.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 14.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 8.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.22
+
+#The great beasts, one in each lair. They grow by half again for every hunter beyond the first, on top of this.
+#The Sand Maw, the Deep Mother and the Trap Crown do not walk, so they have no speed.
+[beasts]
+
+	[beasts.sand_maw]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 300.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 12.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 4.0
+
+	[beasts.deep_mother]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 360.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 12.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 4.0
+
+	[beasts.trap_crown]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 380.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 12.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 6.0
+
+	[beasts.ember_heart]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 400.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 16.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 8.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.2
+
+	[beasts.ice_colossus]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 650.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 16.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 12.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.2
+
+#The ones who keep the great beasts' lairs.
+[guards]
+
+	[guards.glacier_warden]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 70.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 10.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 8.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.2
+
+	[guards.frostling]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 12.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 3.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.27
+
+#The folk of the wild: in the hills, the woods, by the rivers and in the night.
+[wilds]
+
+	[wilds.kobold]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 14.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 3.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.32
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 12
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 1
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 3
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["#minecraft:is_overworld"]
+
+	[wilds.night_flutter]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 12.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 3.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.3
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 6
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 4
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 8
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["#minecraft:is_overworld"]
+
+	[wilds.frost_wolf]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 22.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 4.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 2.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.33
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 4
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 2
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 4
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["#c:is_cold/overworld"]
+
+	[wilds.eagle_owl]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 16.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 4.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.2
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 4
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 1
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 2
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["minecraft:taiga", "minecraft:old_growth_pine_taiga", "minecraft:old_growth_spruce_taiga", "minecraft:dark_forest", "minecraft:windswept_hills", "minecraft:windswept_forest", "minecraft:windswept_gravelly_hills", "minecraft:grove", "minecraft:forest"]
+
+	[wilds.wisp]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 2.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.2
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 15
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 1
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 2
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["minecraft:swamp", "minecraft:mangrove_swamp", "bestiary:rotmire", "bestiary:rotmire_edge"]
+
+	[wilds.nix]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 30.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 5.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.2
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 3
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 1
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 1
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["minecraft:swamp", "minecraft:mangrove_swamp", "bestiary:rotmire"]
+
+	[wilds.mountain_troll]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 70.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 8.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 6.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.24
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 6
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 1
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 1
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["#minecraft:is_mountain"]
+
+	[wilds.bridge_troll]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 70.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 8.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 6.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.24
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 4
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 1
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 1
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["minecraft:swamp", "minecraft:mangrove_swamp", "minecraft:river", "bestiary:rotmire"]
+
+	[wilds.ent]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 90.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 10.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 6.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.24
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 3
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 1
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 1
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["minecraft:forest", "minecraft:flower_forest", "minecraft:birch_forest", "minecraft:old_growth_birch_forest", "minecraft:dark_forest", "minecraft:taiga", "minecraft:old_growth_pine_taiga", "minecraft:old_growth_spruce_taiga", "minecraft:cherry_grove"]
+
+	[wilds.forest_troll]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 70.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 8.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 6.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.24
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 5
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 1
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 1
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["minecraft:dark_forest", "minecraft:old_growth_pine_taiga", "minecraft:old_growth_spruce_taiga", "minecraft:old_growth_birch_forest", "minecraft:birch_forest"]
+
+#The creatures of the Rotmire, the moor round the Trap Crown's hollow.
+[rotmire]
+
+	[rotmire.mire_adder]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 14.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 3.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.22
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 30
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 1
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 2
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["bestiary:rotmire", "bestiary:rotmire_edge 15 1 2"]
+
+	[rotmire.vine_viper]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 10.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 2.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.3
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 25
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 1
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 2
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["bestiary:rotmire", "bestiary:rotmire_edge 12 1 2"]
+
+	[rotmire.moss_python]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 30.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 2.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 2.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.16
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 10
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 1
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 1
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["bestiary:rotmire", "bestiary:rotmire_edge 5 1 1"]
+
+	[rotmire.bog_toad]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 8.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.18
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 20
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 2
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 4
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["bestiary:rotmire", "bestiary:rotmire_edge 10 2 4"]
+
+	[rotmire.bloat_toad]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 16.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.13
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 8
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 1
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 2
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["bestiary:rotmire", "bestiary:rotmire_edge 4 1 2"]
+
+	[rotmire.moor_dragonfly]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 3.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.3
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 30
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 2
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 4
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["bestiary:rotmire", "bestiary:rotmire_edge 12 2 4"]
+
+#The creatures of the Cinderwaste round the Fire Mountain, and the spark fawns of the burnt clearings.
+[cinderwaste]
+
+	[cinderwaste.lava_lizard]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 6.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.3
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 30
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 2
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 4
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["bestiary:cinderwaste", "bestiary:cinderwaste_edge 14 1 3"]
+
+	[cinderwaste.glow_newt]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 10.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.13
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 12
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 1
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 2
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["bestiary:cinderwaste"]
+
+	[cinderwaste.cinder_iguana]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 24.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 4.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.2
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 8
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 1
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 2
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["bestiary:cinderwaste", "bestiary:cinderwaste_edge 6 1 1"]
+
+	[cinderwaste.bombardier]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 8.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.22
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 14
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 1
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 3
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["bestiary:cinderwaste", "bestiary:cinderwaste_edge 8 1 2"]
+
+	[cinderwaste.slagback]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 30.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 4.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 8.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.14
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 6
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 1
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 1
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["bestiary:cinderwaste"]
+
+	[cinderwaste.fire_beetle]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 3.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.25
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 14
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 3
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 6
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["bestiary:cinderwaste", "bestiary:cinderwaste_edge 10 3 5"]
+
+	[cinderwaste.ash_hen]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 6.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.25
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 20
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 2
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 4
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["bestiary:cinderwaste_edge"]
+
+	[cinderwaste.spark_fawn]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 6.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.32
+
+#The animals of the land: the Nether's ember boars, the mist stags of the woods, the rock crabs.
+[animals]
+
+	[animals.ember_boar]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 30.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 5.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.25
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 10
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 2
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 4
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["minecraft:crimson_forest", "minecraft:nether_wastes"]
+
+	[animals.mist_stag]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 20.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.28
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 6
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 1
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 3
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["#minecraft:is_forest"]
+
+	[animals.rock_crab]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 24.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 4.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 8.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.2
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 12
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 1
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 2
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["#minecraft:is_overworld"]
+
+#The creatures of the desert.
+[desert]
+
+	[desert.fennec]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 8.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 2.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.3
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 5
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 1
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 2
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["minecraft:desert"]
+
+	[desert.jerboa]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 3.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.34
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 7
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 2
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 4
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["minecraft:desert"]
+
+	[desert.deathstalker]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 12.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 3.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 4.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.26
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 4
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 1
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 2
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["minecraft:desert"]
+
+	[desert.camel_spider]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 10.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 4.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.3
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 3
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 1
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 1
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["minecraft:desert"]
+
+	[desert.horned_viper]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 8.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 3.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.2
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 4
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 1
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 1
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["minecraft:desert"]
+
+	[desert.lappet_vulture]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 14.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 3.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.22
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 3
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 1
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 3
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["minecraft:desert"]
+
+	[desert.dung_beetle]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 4.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.14
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 6
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 1
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 3
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["minecraft:desert"]
+
+	[desert.oryx]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 22.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 5.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.24
+		#How often they come against the others of their kind in a biome (a zombie has 100, a cow 8). 0 for never.
+		#Range: 0 ~ 1000
+		weight = 4
+		#Smallest group.
+		#Range: 1 ~ 32
+		minGroup = 3
+		#Largest group (never below minGroup).
+		#Range: 1 ~ 32
+		maxGroup = 6
+		#Where they come: a biome (minecraft:desert) or a tag (#minecraft:is_overworld). An entry with numbers
+		#after it (bestiary:rotmire_edge 15 1 2) has its own weight and group there; the rest take the ones above.
+		biomes = ["minecraft:desert"]
+
+#The undead of the desert tombs and the worm priest who keeps them.
+[tomb]
+
+	[tomb.tomb_mummy]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 30.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 5.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 2.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.19
+
+	[tomb.tomb_guard]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 26.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 6.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 6.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.24
+
+	[tomb.jackal_mummy]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 20.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 5.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 0.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.36
+
+	[tomb.worm_priest]
+		#Whether new ones come into the world.
+		spawning = true
+		#Full health, in half-hearts.
+		#Range: 1.0 ~ 4096.0
+		health = 120.0
+		#The weight of their blows; everything they do is scaled by it over the default.
+		#Range: 0.0 ~ 1024.0
+		damage = 4.0
+		#Armor points.
+		#Range: 0.0 ~ 30.0
+		armor = 4.0
+		#How fast they walk (a zombie has 0.23).
+		#Range: 0.01 ~ 2.0
+		speed = 0.22

@@ -1,0 +1,38 @@
+#Names over bodies, the way a player's name is drawn over them.
+[names]
+	#Whether a body's name is drawn over it at all.
+	enabled = true
+	#How close, in blocks, you have to be to read it.
+	#Range: 1.0 ~ 64.0
+	distance = 12.0
+
+#What you see and hear round a body.
+[ambience]
+	#Flies over bodies that still have flesh on them. Only drawn for you.
+	flies = true
+
+#Short how-to lines over the hotbar, each shown once.
+[hints]
+	#Whether they are shown: how to search, drag, hang and nail a body.
+	enabled = true
+
+#The pause menu and the main menu.
+[menu]
+	#Whether the Discord and Donate buttons are shown in the pause menu. Your own choice:
+	#the Remains settings (K, Looks) switch the same thing, and it is also kept in your home folder
+	#(~/.vaskar/prefs.properties), so a new modpack version does not turn it back on.
+	#Modpacks may not ship this switched off (see LICENSE-MODPACKS.md).
+	buttons = true
+	#Whether the main menu shows its little scenes (the dead beside the buttons). Off for a custom
+	#main menu they do not fit, or simply a plain one. A modpack may ship this off; each player can also switch
+	#it in Video Settings > Vaskar's Mods (kept in ~/.vaskar/prefs.properties).
+	title_scenes = true
+	#Whether a world loads behind the mods' own loading screens (a picture, dust, a tip). Off, the
+	#game's normal loading screen. A modpack may ship this off; each player can also switch it in
+	#Video Settings > Vaskar's Mods.
+	loading_screen = true
+
+#The fights with the six who rule.
+[bosses]
+	#Whether the camera shakes a little when a heavy blow lands near you.
+	camera_shake = true

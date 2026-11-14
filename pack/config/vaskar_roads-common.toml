@@ -1,0 +1,120 @@
+[general]
+	#Lay roads at all.
+	enabled = true
+	#The dimensions that get roads. Any dimension with land on top can be named here (a mod's own
+	#overworld-like world); those below have a switch of their own.
+	dimensions = ["minecraft:overworld"]
+	#Roads in the End between its cities, of end stone and purpur, on bridges over the void between islands.
+	endRoads = false
+	#Roads in the Twilight Forest (mod) between its towers, hills, mazes and groves.
+	twilightForestRoads = false
+	#Roads in the Aether (mod) between its dungeons, of holystone, on bridges from island to island.
+	aetherRoads = false
+	#Roads on the planets of Ad Astra (mod) - the Moon, Mars, Venus, Mercury, Glacio - each of its own stone,
+	#between the villages, temples and towers there.
+	adAstraRoads = false
+	#Roads in the Undergarden (mod) along the floor of its great cave, of depthrock, between its camps
+	#and ruins.
+	undergardenRoads = false
+	#Ways in the Nether between the structures in #vaskar_roads:nether_connected: causeways and bridges
+	#over the lava sea, tunnels through the rock. Without any such structure there are none.
+	netherWays = true
+	#How far apart two places of the Nether may be and still be joined, in blocks.
+	#Range: 64 ~ 2000
+	netherReach = 560
+
+#Which structures the roads join. Entries are structure ids, #tags or patterns ("dungeons_arise:*", "*:village_*"). Besides these lists the tags
+##vaskar_roads:connected and #vaskar_roads:ignored do the same, for data packs.
+[places]
+	#Structures the roads come to.
+	connect = ["#minecraft:village", "*:village_*", "*:*/village_*"]
+	#Structures never joined, whatever a tag or another mod says.
+	ignore = []
+	#How far from its middle a structure's own ground reaches, as "id=blocks": the road stops
+	#there and a trodden path leads on to the middle.
+	radii = []
+	#The same, for any joined structure not in that list.
+	#Range: 0 ~ 128
+	defaultRadius = 24
+	#A structure set (random_spread) to lay the network on, one place a cell, e.g. "minecraft:villages".
+	#Empty: a grid of the network's own (cellSize), or the one another mod asked for.
+	gridStructureSet = ""
+
+#How many roads there are.
+[network]
+	#The size of a cell of the network's own grid, in chunks: one node a cell. Smaller is denser.
+	#Ignored where the network is laid on a structure set.
+	#Range: 8 ~ 96
+	cellSize = 34
+	#Percent of the rows and columns of cells that are highways: roads that run on across the land.
+	#Range: 0 ~ 100
+	highwayChance = 17
+	#Percent chance two places in cells side by side are joined.
+	#Range: 0 ~ 100
+	neighbourChance = 80
+	#The same for cells corner to corner.
+	#Range: 0 ~ 100
+	diagonalChance = 30
+	#Percent chance a place next to a highway gets a road to it.
+	#Range: 0 ~ 100
+	spurChance = 45
+	#A place with no other place and no highway near still gets one road, leading nowhere.
+	#Always so on a grid a mod asked for (its places are close together).
+	lonelyRoads = false
+
+#What the roads look like.
+[roads]
+	#Width of every road, as a factor.
+	#Range: 0.5 ~ 2.0
+	widthScale = 1.0
+	#Roads are narrower in forests and jungles.
+	narrowInWoods = true
+	#Leaves are cleared over the road to the sky, so roads through woods are lit and show on maps.
+	openCanopy = true
+	#Byways - a spur to a highway, a lone place's way out - are narrow unpaved trails; the roads
+	#between places and the highways stay broad and paved.
+	trails = true
+	#How worn the edges of the roads are in the wild, 0 (kept) to 1: the verge grows over the outer stones.
+	#Range: 0.0 ~ 1.0
+	wear = 0.25
+	#Biomes (ids or #tags) no road crosses; the tag #vaskar_roads:no_roads does the same.
+	excludedBiomes = []
+	#Bridges over rivers and valleys. Off: a road ends at the water.
+	bridges = true
+	#Tunnels through mountains. Off: deep cuttings.
+	tunnels = true
+	#Lamp posts.
+	lamps = true
+	#Milestones in the wild.
+	milestones = true
+	#Signposts at crossroads.
+	signposts = true
+	#A roofed well at crossroads of three roads or more.
+	wells = true
+	#Rest areas on the long stretches: a bench, a fire ring, a trough and a post for the horses.
+	restAreas = true
+	#In chunks that hold a surface structure, build only over bare land and leave what was built standing.
+	keepOutOfStructures = true
+
+#The paving of each land, as "block" or "block/slab*weight" (the slab makes the half steps).
+#Empty: the built-in mix.
+[paving]
+	temperate = []
+	forest = []
+	desert = []
+	badlands = []
+	snow = []
+	stone = []
+	swamp = []
+	jungle = []
+	savanna = []
+	end = []
+	sky = []
+	moon = []
+	mars = []
+	venus = []
+	mercury = []
+	glacio = []
+	under = []
+	#The roads to a ruler's seat.
+	grand = []

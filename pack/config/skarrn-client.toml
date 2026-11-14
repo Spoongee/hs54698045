@@ -1,0 +1,20 @@
+#What you hear and see.
+[sound]
+	#Whether the fight has its own music.
+	#Off falls back to whatever the game would otherwise be playing.
+	music = true
+
+#Vaskar's community. Each one also follows your own choice in ~/.vaskar/prefs.properties, which modpacks do not ship.
+[community]
+	#The Discord and Donate buttons in the pause menu (only without Remains, which has its own).
+	menu_buttons = true
+	#After a boss falls, a line in chat offering to share the moment (a screenshot and a ready text).
+	share_victories = true
+	#Bestiary's own loading screens with pictures of the beasts (only without Remains and Opus).
+	loading_screen = true
+
+#Anonymous usage statistics, shared by Vaskar's mods (config/vaskars-telemetry.properties).
+[privacy]
+	#Whether anonymous numbers are sent, like how many players beat a boss. No names, no worlds.
+	#Off until you say yes in the intro on first start or here.
+	statistics = false

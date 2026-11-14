@@ -1,0 +1,25 @@
+#One switch for a weak computer: the fewest sparks, plain movement beyond 16 blocks and a still menu
+#figure, whatever the settings below say.
+weakComputer = false
+
+[effects]
+	#How many of Opus's own sparks, smoke, frost and spell light are drawn: ALL, FEWER (about a third),
+	#FEWEST (about one in eight) or OFF. The game's own particle setting (Decreased, Minimal) turns them down
+	#as well, whichever is lower. Shockwave rings, wards and the marks of an attack about to land are always drawn.
+	#Allowed Values: ALL, FEWER, FEWEST, OFF
+	particles = "ALL"
+	#Whether the main menu shows its figure beside the buttons at all. Off for a custom main menu
+	#it does not fit: the menu is then left exactly as the game or the menu mod draws it.
+	menuFigure = true
+	#Whether a world loads behind Opus's own loading screens. Off, the game's normal one. A modpack may
+	#ship this off; each player can also switch it in Video Settings > Vaskar's Mods.
+	loadingScreens = true
+	#Whether the figure beside the main menu's buttons waves. Off, it stands still.
+	menuFigureMoves = true
+
+[animation]
+	#Out to how many blocks folk move with every small habit: breathing, hair, shifting their feet,
+	#fiddling with what they hold. Farther out they still walk, fight and work, just plainer. Lower it for
+	#busy towns on a weak computer; 0 draws everybody plainly.
+	#Range: 0 ~ 256
+	detailDistance = 48

@@ -1,0 +1,28 @@
+Drop music in this folder and Absolute AFK Cinema will play it while the camera runs.
+
+.ogg  .mp3  .wav  .flac  .opus  .weba  .aiff  .au - no converting needed. The mod
+decodes the file itself and hands the samples to Minecraft, so your track goes
+through the normal Music slider, pauses with the game and stops when you come
+back, exactly like anything else the game plays.
+
+You can drop a file in while the game is running - the folder is watched, so the
+new track joins in by itself and plays as the next one. No restart, no button.
+
+PLAYLISTS
+A subfolder is a playlist: music/night, music/building, whatever you call it.
+An .m3u file is a playlist too, and the better one, because its lines may point
+anywhere on this computer:
+
+    #EXTINF:0,Evening at the lake
+    D:/Music/Ambient/evening at the lake.flac
+    ../another folder/second track.mp3
+
+That way the music collection you already have is played where it already lies,
+and nothing has to be copied into a game folder. Lines starting with # are notes;
+an #EXTINF line gives the track the name you write after the comma.
+
+In the settings screen (F9 -> Music) you say which playlists to draw from - leave
+that empty for all of them - whether you hear your own tracks, the three that come
+with the mod, or both, and whether the game's music discs join in.
+
+File names are yours; nothing here renames anything.

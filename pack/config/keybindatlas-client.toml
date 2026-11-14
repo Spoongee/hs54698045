@@ -1,0 +1,129 @@
+[display]
+	#When enabled, per-frame render timing is logged every 120 frames for performance diagnosis.
+	renderProfilingEnabled = false
+	#Default screen scale for Keybind Atlas. Valid values: X1, X2.
+	defaultPixelScale = "X1"
+	#Keyboard layout shown by Keybind Atlas. Valid values: US_QWERTY, UK_QWERTY, PORTUGUESE_QWERTY, ABNT2, FRENCH_AZERTY, BELGIAN_AZERTY, GERMAN_QWERTZ, SWISS_QWERTZ, SPANISH, ITALIAN, NORDIC_ISO. Legacy values AZERTY and QWERTZ are still accepted.
+	keyboardLayout = "US_QWERTY"
+	#Enables box entrance, connector draw-in, and hover transition animations.
+	animationsEnabled = true
+	#When enabled, bindings listed in hiddenBindingLabels stay hidden to reduce clutter.
+	hiddenBindingsEnabled = true
+	#When enabled, custom category assignments and colors are applied. Hidden keybinds remain available.
+	categoriesEnabled = true
+	#Show category assignment help. Remembers the info-button toggle.
+	categoryHelpVisible = true
+	#Show edit mode help. Remembers the info-button toggle.
+	editHelpVisible = true
+	#Show search mode help. Remembers the info-button toggle.
+	searchHelpVisible = true
+	#Show keybind sets help. Remembers the info-button toggle.
+	setsHelpVisible = true
+	#Show controller radial help. Remembers the info-button toggle.
+	radialHelpVisible = true
+	#Remember whether the legend is collapsed when opening the atlas.
+	legendCollapsed = false
+	#Active keybind set; empty means no set is selected.
+	selectedKeybindSet = ""
+	#Active controller set, stored separately from keyboard sets.
+	selectedControllerSet = ""
+	#Controller diagram and button symbols. Does not change assignments.
+	controllerLayout = "PLAYSTATION"
+	#Key labels whose bindings should stay hidden in the atlas.
+	#Entries for main keyboard keys match physical slots using US QWERTY labels.
+	#That keeps defaults like W, A, S, D and 1-9 hidden on AZERTY and QWERTZ layouts too.
+	#Keys outside the main keyboard map, such as numpad and function keys, still match their visible labels.
+	#To target numpad keys, prefix the label with NUM-, for example "NUM-1" hides the numpad 1 while "1" hides the top-row 1 (case-insensitive).
+	#Examples: ["SHIFT", "SPACE", "CTRL"] or ["-", "="] for the physical minus and equals slots.
+	#If the same label appears on multiple keys, all matching keys are affected.
+	hiddenBindingLabels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "W", "T", "A", "S", "D", "/"]
+	#Preset colors shown when creating categories. Format: 'id|Name|#RRGGBBAA'.
+	#Each entry must use a unique id and color. Defaults include the built-in palette used by the category picker.
+	presetCategoryColors = ["crimson|Crimson|#B63C47FF", "purple|Purple|#9145D6FF", "emerald|Emerald|#1F9F4DFF", "tangerine|Tangerine|#F97316FF", "amber|Amber|#F59E0BFF", "cyan|Cyan|#06B6D4FF", "rose|Rose|#EC4899FF", "lime|Lime|#84CC16FF", "teal|Teal|#14B8A6FF", "copper|Copper|#B45309FF"]
+	#User-defined key categories. Format: 'id|Name|#RRGGBBAA|#RRGGBBAA'.
+	#Defaults include Combat, Magic, Movement, Building, Utility, and Technology.
+	customCategories = ["combat|Combat|#B63C47FF|#FFFFFFFF", "magic|Magic|#9145D6FF|#FFFFFFFF", "movement|Movement|#1F9F4DFF|#FFFFFFFF", "building|Building|#F59E0BFF|#111318FF", "utility|Utility|#F97316FF|#FFFFFFFF", "technology|Technology|#06B6D4FF|#FFFFFFFF"]
+	#Per-key custom category assignments. Format: 'KeyTarget::category-id'.
+	#Targets follow the same key-label rules as hiddenBindingLabels, including the NUM- prefix for numpad keys.
+	keyCategoryAssignments = []
+	#When enabled, F1-F12 keys are shown on the keyboard layout.
+	fKeysEnabled = false
+	#When enabled, auxiliary keys (insert, delete, arrows, numpad) feature is available.
+	allKeysEnabled = true
+	#When enabled, a dark overlay is drawn behind the atlas for better readability.
+	backgroundBlurEnabled = false
+	#Blur strength when background blur is enabled. Each level adds an extra blur pass. Range: 1-5, default: 1.
+	backgroundBlurStrength = 1
+	#When enabled, nearby connector lines alternate between the default and alternate line colors.
+	alternatingLineColorsEnabled = true
+	#Opacity of panel/info-box backgrounds. Range: 0.0 (transparent) to 1.0 (opaque), default: 0.4.
+	panelOpacity = 0.4
+	#When enabled, compact unhovered binding boxes truncate long keybind names with an ellipsis. Hovered boxes still show full names.
+	compactKeybindTextLimitEnabled = true
+	#Maximum characters shown for each keybind name in compact unhovered binding boxes. Default: 32.
+	maxCompactKeybindTextLength = 32
+	#Maximum number of assignments shown in compact (unhovered) binding boxes. Default: 3.
+	maxUnhoveredAssignments = 3
+	#Mods that are disabled in the mod filter list. These mod ids/names will be hidden from the atlas when present.
+	disabledMods = []
+	#Individual bindings disabled in the mod filter list. Format: 'ModName::BindingLabel'.
+	disabledBindings = []
+
+[layout]
+	#Scales the box width limit. Text still determines the actual width.
+	box_width = 100
+	#Scales vertical padding and row spacing without clipping text.
+	box_height = 100
+	#Minimum preferred space between info boxes.
+	box_gap = 5
+	#Space above the keyboard before the first box lane.
+	top_gap = 17
+	#Space below the keyboard before the first box lane.
+	bottom_gap = 15
+	#Space between the keyboard and side boxes.
+	side_gap = 10
+	#Higher values favor straighter lines. Lower values allow more turns.
+	bend_cost = 18
+	#Penalty for crossing another connector when a crossing is necessary.
+	crossing_cost = 1400
+	#Higher values discourage lines from running immediately beside each other.
+	line_separation = 10
+	#Keep assigned keys as routing obstacles, except the source key.
+	avoid_keys = true
+	#Try a crossing-free route first; allow crossings as a fallback.
+	avoid_crossings = true
+	#Use the existing smaller text and widths when many boxes are visible.
+	auto_compact = true
+
+	[colors.assignedKey]
+		fill = "#0161CCFF"
+		text = "#FFFFFFFF"
+
+	[colors.unusedKey]
+		fill = "#2F3136FF"
+		text = "#9EA2A8FF"
+
+	[colors.hiddenBindingKey]
+		fill = "#1F2125FF"
+		text = "#B5B5B5FF"
+
+	[colors.hoveredKey]
+		fill = "#5EB3FFFF"
+		text = "#D0D8E0FF"
+
+	[colors.bindingBox]
+		fill = "#3A3D42FF"
+		hoverFill = "#474B52FF"
+		border = "#1B1C20FF"
+		hoverBorder = "#72A8EBFF"
+		text = "#E5E5E5FF"
+		sourceText = "#9FA5AEFF"
+
+	[colors.keyboardHousing]
+		fill = "#1A1C20FF"
+		border = "#0D0E10FF"
+
+	[colors.connectorLine]
+		default = "#8A8F96FF"
+		defaultAlt = "#5C6068FF"
+		hover = "#86BCFFFF"

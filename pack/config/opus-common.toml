@@ -1,0 +1,147 @@
+[world]
+	#How many of each ruler's seat (the dwarf king's palace, Barrowburg, the war fortress, ...) and of each great
+	#beast's lair a world has, spread round the spawn between 1500 and 5000 blocks out. Set it to the number of
+	#players for one each. Takes effect for land not yet made.
+	#Range: 1 ~ 8
+	seatsPerWorld = 1
+
+[players]
+	#Whether players choose a people when they first come into a world: man, orc, elf or dwarf, each with its
+	#own size, health and strengths, figure and standing with the land. Off, everybody is a man as before.
+	peoples = true
+	#Whether armour is drawn on an orc's, elf's or dwarf's own figure (fitted to it). Off, it still protects
+	#but is not seen. Armour that another mod draws on a model of its own is never drawn on these figures.
+	peopleArmour = true
+
+[wars]
+	#Whether the peoples take each other's places while nobody looks: banners, residents and the dead change
+	#when a player comes back. The rulers' seats never fall.
+	enabled = true
+	#How many ticks one turn of the war lasts (24000 is a day: three days as made).
+	#Range: 1200 ~ 720000
+	turnTicks = 72000
+	#How far from a player places take part in the war, in blocks.
+	#Range: 200 ~ 10000
+	warRadius = 2000
+	#How far apart two places may be for one to attack the other, in blocks.
+	#Range: 100 ~ 2000
+	frontRange = 500
+	#At most this many places change hands in one turn.
+	#Range: 0 ~ 20
+	maxTakesPerTurn = 2
+	#Whether now and then one of a ruler's best rises to lead the war for them: their side attacks more
+	#often and harder while the general is in the field.
+	generals = true
+	#Whether an attack that passes near a player marches there as an army on the roads.
+	visibleArmies = true
+	#The most people one army has.
+	#Range: 4 ~ 40
+	maxArmySize = 16
+	#Whether the losers lie dead in a place that was taken.
+	corpses = true
+	#Whether bandits hold the small places they take (hamlets, lumber camps, trading posts). Off, they
+	#sack them and go, and the place stands empty until its own people come back.
+	banditsTakePlaces = false
+
+#How many of the living there are, for servers: the parties on the roads, the people of new places, and how
+#hard those far from every player work the server.
+[population]
+	#The chance, every few seconds and for each player, that a party on the roads (a patrol, a caravan,
+	#raiders, adventurers, a beggar...) comes out near them. 0 for none.
+	#Range: 0.0 ~ 1.0
+	roamingChance = 0.08
+	#How many seconds between those chances.
+	#Range: 5 ~ 3600
+	roamingEverySeconds = 30
+	#No new party while this many travellers are already within 160 blocks of the player.
+	#Range: 0 ~ 64
+	maxRoamersNear = 8
+	#No new party, ambush or caravan at all while this many of the living (any kind, settled or travelling)
+	#are within 128 blocks of the player. The cap that keeps a crowded corner of the world from growing.
+	#Range: 0 ~ 512
+	maxPeopleNear = 40
+	#How many people live in the places made from now on (villages, camps, outposts), times this.
+	#0.5 for half. The rulers and their courts are not counted.
+	#Range: 0.0 ~ 2.0
+	residents = 1.0
+	#The living further than this many blocks from every player think only every fourth tick: they
+	#stand, walk and go about their day more coarsely where nobody sees them. 0 to let them think every tick.
+	#Range: 0 ~ 256
+	calmBeyond = 48
+
+#How the living trade: prices that follow the player's standing, a people's plight in war, and what a trader
+#has and wants. Own trades come from data packs: data/<namespace>/opus/trades/*.json (see Opus's docs).
+[trade]
+	#Prices that move. Off: the old fixed prices (friends a little less, foes a little more).
+	dynamicPrices = true
+	#Traders have only so many of each ware a day, and what is bought out costs a little more until morning.
+	stock = true
+	#How much standing moves prices, times this: 1 is hated +30 %, exalted -15 %.
+	#Range: 0.0 ~ 3.0
+	standingWeight = 1.0
+	#How much a people's plight (its ruler dead, its places lost) moves the price of arms, armour and food.
+	#Range: 0.0 ~ 3.0
+	warWeight = 1.0
+	#How fast a trader tires of the same ware brought again and again.
+	#Range: 0.0 ~ 3.0
+	demandWeight = 1.0
+
+#Vaskar the Wanderer, who hands every new player the Chronicle and comes back now and then with news.
+[vaskar]
+	#Whether he finds a new player a little after they come into the world and hands them the Chronicle.
+	firstMeeting = true
+	#Whether he comes back later, when he has something to say: a tip, a favour owed, a debt to collect.
+	#Off, he still gets a player out of the king's strongroom once.
+	visits = true
+
+#What waits on the roads, for a player travelling them away from the places people live.
+[roads]
+	#Whether bandits lie in wait where the road bends.
+	ambushes = true
+	#The chance of an ambush every ten seconds on a road (at most one in ten minutes).
+	#Range: 0.0 ~ 1.0
+	ambushChance = 0.05
+	#Whether the Guild's caravans go by, guards and all.
+	caravans = true
+	#The chance of a caravan every ten seconds on a road (at most one in three minutes).
+	#Range: 0.0 ~ 1.0
+	caravanChance = 0.08
+
+#The tasks the living give: bounties, rescues, letters and the rest. A kind turned off is never asked;
+#tasks already taken stand.
+[tasks]
+	#Whether the living give tasks at all.
+	enabled = true
+	#Somebody went out and did not come back: bring their keepsake home.
+	missing = true
+	#Somebody is stuck out there alive: bring them home.
+	rescue = true
+	#Somebody with a price on their head, and the ones with them.
+	bounty = true
+	#Kill so many of a side the giver is at war with.
+	slay = true
+	#Carry a sealed letter to another place.
+	deliver = true
+	#Bring so much of something.
+	gather = true
+	#Go and look at an enemy's place and say what you saw.
+	scout = true
+	#A raid is on its way: stand with them until it is beaten.
+	defend = true
+	#Kill so many of the things of the night near the place.
+	hunt = true
+	#A people's grudge against a particular wild thing: kill that kind.
+	grudge = true
+
+#The rulers whose seats are the boss fights (their strength is in opus-mobs.toml).
+[rulers]
+	#Whether one of the court takes a dead ruler's seat after a while. Off, the seat stays empty.
+	succession = true
+	#How many days after a ruler's death the new one takes the seat.
+	#Range: 1 ~ 100
+	successionDays = 3
+
+#Titles a feat earns, worn next to a player's name, by which the living address them.
+[titles]
+	#Whether titles are earned, worn and spoken. Off, none are given and none is shown; those earned are kept.
+	enabled = true

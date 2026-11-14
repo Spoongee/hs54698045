@@ -1,0 +1,33 @@
+{
+  "allowMovement": {
+    "dev.dyslexic.cinematic.client.SceneScreen": true,
+    "xaero.common.gui.GuiWaypoints": true,
+    "xaero.map.gui.GuiWorldMapSettings": true,
+    "dev.ftb.mods.ftblibrary.ui.ScreenWrapper": true,
+    "net.minecraft.class_433": true,
+    "punchymoves.client.ui.ConflictingAnimationsScreen": true,
+    "net.minecraft.class_429": true,
+    "net.minecraft.class_458": true,
+    "net.minecraft.class_6599": true,
+    "net.minecraft.class_5375": true,
+    "dev.isxander.yacl3.gui.YACLScreen": true,
+    "me.flashyreese.mods.reeses_sodium_options.client.gui.SodiumVideoOptionsScreen": true,
+    "net.minecraft.class_4189": true,
+    "xaero.common.gui.GuiMinimapMain": true,
+    "xaero.common.gui.GuiMinimapInfoSettings": true,
+    "xaero.common.gui.GuiInfoDisplayEdit": true,
+    "xaero.common.gui.GuiEditMode": true,
+    "xaero.common.gui.GuiMinimapViewSettings": true,
+    "dlovin.inventoryhud.config.gui.InventoryConfigScreen": true,
+    "dlovin.inventoryhud.config.gui.ArmorConfigScreen": true,
+    "dlovin.inventoryhud.config.gui.PotionConfigScreen": true,
+    "me.shedaniel.clothconfig2.gui.ClothConfigScreen": true,
+    "net.irisshaders.iris.gui.screen.ShaderPackScreen": true,
+    "mezz.jei.gui.recipes.RecipesGui": true,
+    "xaero.common.gui.GuiMinimapMiscSettings": true,
+    "dev.isxander.yacl3.gui.controllers.PopupControllerScreen": true
+  },
+  "hideBackground": {
+    "mezz.jei.gui.recipes.RecipesGui": true
+  }
+}

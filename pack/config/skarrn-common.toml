@@ -1,0 +1,41 @@
+#How hard the fight is.
+[boss]
+	#Multiplies the Skarrn's health. 1.0 is as designed.
+	#Range: 0.1 ~ 10.0
+	health_multiplier = 1.0
+	#Multiplies what the Skarrn's own attacks do.
+	#Only its attacks: a player's antler hits for what it says it does.
+	#Range: 0.1 ~ 10.0
+	damage_multiplier = 1.0
+	#Whether a burnt clearing comes with its Skarrn already in it.
+	#Off leaves the clearing, the spawn egg and the summon command working:
+	#for packs that would rather place the fight themselves.
+	spawn_in_clearing = true
+
+#The antler it leaves behind.
+[antler]
+	#Ticks between uses. 400 is twenty seconds.
+	#Range: 0 ~ 24000
+	cooldown = 400
+
+#What the burnt clearing is made of.
+[worldgen]
+	#Whether the clearing has bodies in it.
+	#Needs the Remains mod; without it there are never any either way.
+	clearing_corpses = true
+
+#Which of the great beasts' lairs the world makes. Off, no new one is made in land not yet made;
+#the beast can still be summoned or hatched from its egg. Lairs already there stay.
+[lairs]
+	#The burnt clearings where the Skarrn grazes.
+	burnt_clearings = true
+	#The Sand Maw's grotto under the desert.
+	sand_maw_grotto = true
+	#The Deep Mother's sunken temple in the ocean.
+	deep_mother_temple = true
+	#The Trap Crown's hollow in the Rotmire.
+	trap_crown_hollow = true
+	#The Ice Colossus's hall in the glacier.
+	ice_colossus_hall = true
+	#The Fire Mountain where the Ember Heart sleeps, and the Cinderwaste round it.
+	fire_mountain = true

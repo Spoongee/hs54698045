@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 2,
+  "items": [
+    "$minecraft:weapon",
+    "$minecraft:universal_enchants_axe",
+    "$minecraft:trident"
+  ],
+  "incompatible": [
+    "minecraft:smite",
+    "majruszsenchantments:misanthropy",
+    "minecraft:impaling",
+    "majruszsenchantments:incompatibility_curse",
+    "deeperdarker:sculk_smite"
+  ]
+}

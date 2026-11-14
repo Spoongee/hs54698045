@@ -1,0 +1,19 @@
+{
+  "enabled": true,
+  "onlyEnchanted": false,
+  "disableVanillaGlint": false,
+  "color": "#7FD4FF",
+  "diamondColor": "#7FD4FF",
+  "ironColor": "#FFFFFF",
+  "goldColor": "#FFE14D",
+  "thickness": 0.15,
+  "thirdPerson": true,
+  "armorEnabled": true,
+  "armorOnlyEnchanted": true,
+  "armorColor": "#7FD4FF",
+  "armorDiamondColor": "#7FD4FF",
+  "armorIronColor": "#FFFFFF",
+  "armorGoldColor": "#FFE14D",
+  "armorNetheriteColor": "#C0B2A8",
+  "armorThickness": 0.4
+}

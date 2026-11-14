@@ -1,0 +1,7 @@
+[
+  {"version":1},
+  {"type":"item_stack","value":"{Count:1b,id:\"clutter:fox_plushie\"}"},
+  {"type":"item_stack","value":"{Count:1b,id:\"minecraft:iron_helmet\",tag:{Damage:98,Enchantments:[{id:\"minecraft:protection\",lvl:3s},{id:\"minecraft:binding_curse\",lvl:1s}]}}"},
+  {"type":"item_stack","value":"{Count:1b,id:\"minecraft:diamond\"}"},
+  {"type":"item_stack","value":"{Count:1b,id:\"minecraft:stone\"}"}
+]

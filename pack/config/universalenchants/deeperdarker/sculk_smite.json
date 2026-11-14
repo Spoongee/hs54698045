@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 2,
+  "items": [
+    "$minecraft:weapon"
+  ],
+  "incompatible": [
+    "minecraft:smite",
+    "majruszsenchantments:misanthropy",
+    "minecraft:bane_of_arthropods",
+    "minecraft:impaling",
+    "majruszsenchantments:incompatibility_curse"
+  ]
+}
