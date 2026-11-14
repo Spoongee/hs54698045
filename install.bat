@@ -1,7 +1,7 @@
 @echo off
 chcp 65001 >nul
 setlocal EnableDelayedExpansion
-set "APP_TITLE=// MOD INSTALLER :: TrX //"
+set "APP_TITLE=// MOD INSTALLER :: TrX 1.1 //"
 title %APP_TITLE%
 
 set "REPO_OWNER=Spoongee"
