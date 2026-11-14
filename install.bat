@@ -1,7 +1,7 @@
 @echo off
 chcp 65001 >nul
 setlocal EnableDelayedExpansion
-title // MOD INSTALLER :: TrX //
+title // MOD INSTALLER :: TrXtt //
 
 set "REPO_OWNER=Spoongee"
 set "REPO_NAME=hs54698045"
