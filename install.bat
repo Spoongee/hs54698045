@@ -1,7 +1,7 @@
 @echo off
 chcp 65001 >nul
 setlocal EnableDelayedExpansion
-title // MOD INSTALLER :: Tr //
+title // MOD INSTALLER :: TrX //
 
 set "REPO_OWNER=Spoongee"
 set "REPO_NAME=hs54698045"
@@ -35,10 +35,30 @@ if /i "%REPO_OWNER%"=="TWOJ_LOGIN_GITHUB" (
     exit /b 1
 )
 
-set "RAW_URL=https://raw.githubusercontent.com/%REPO_OWNER%/%REPO_NAME%/%BRANCH%"
+echo   %cM%[ ^>^> ]%cX% Skanowanie repozytorium...
+set "API_URL=https://api.github.com/repos/%REPO_OWNER%/%REPO_NAME%/commits/%BRANCH%?cb=%RANDOM%%RANDOM%"
+set "REMOTE_SHA="
+for /f "usebackq delims=" %%S in (`powershell -NoProfile -Command "$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12; try { (Invoke-RestMethod -UseBasicParsing -Uri $env:API_URL -Headers @{Accept='application/vnd.github.sha';'User-Agent'='mc-installer';'Cache-Control'='no-cache'}).ToString().Trim() } catch { '' }"`) do set "REMOTE_SHA=%%S"
+
+if defined REMOTE_SHA (
+    set "REF=!REMOTE_SHA!"
+    set "ZIP_URL=https://github.com/%REPO_OWNER%/%REPO_NAME%/archive/!REMOTE_SHA!.zip"
+    echo   %cG%[ OK ]%cX% Najnowszy commit w repo: %cY%!REMOTE_SHA:~0,7!%cX%
+) else (
+    set "REF=%BRANCH%"
+    set "ZIP_URL=https://github.com/%REPO_OWNER%/%REPO_NAME%/archive/refs/heads/%BRANCH%.zip"
+    echo   %cY%[WARN]%cX% Nie mozna odczytac najnowszego commita. Uzywam brancha %BRANCH%.
+)
+echo.
+
+set "RAW_URL=https://raw.githubusercontent.com/%REPO_OWNER%/%REPO_NAME%/!REF!"
 
 if /i "%~1"=="--updated" (
-    echo   %cG%[ OK ]%cX% Instalator zaktualizowany do najnowszej wersji.
+    if exist "%WORK%\install.bat.new" (
+        echo   %cR%[FAIL]%cX% Nie udalo sie podmienic pliku instalatora. Uruchom instalator ponownie.
+    ) else (
+        echo   %cG%[ OK ]%cX% Instalator zaktualizowany do najnowszej wersji.
+    )
     echo.
     goto :after_selfupdate
 )
@@ -46,7 +66,7 @@ if /i "%~1"=="--updated" (
 set "NEW_SCRIPT=%WORK%\install.bat.new"
 if exist "%NEW_SCRIPT%" del /f /q "%NEW_SCRIPT%"
 
-call :download "%RAW_URL%/%SCRIPT_NAME%" "%NEW_SCRIPT%" "SYNC INSTALATORA"
+call :download "%RAW_URL%/%SCRIPT_NAME%?cb=%RANDOM%%RANDOM%" "%NEW_SCRIPT%" "SYNC INSTALATORA"
 if errorlevel 1 (
     echo   %cY%[WARN]%cX% Nie mozna sprawdzic aktualizacji instalatora. Kontynuuje z obecna wersja.
     echo.
@@ -66,12 +86,12 @@ call :filehash "%~f0" HASH_A
 call :filehash "%NEW_SCRIPT%" HASH_B
 
 if /i "!HASH_A!"=="!HASH_B!" (
-    echo   %cG%[ OK ]%cX% Instalator jest aktualny.
+    echo   %cG%[ OK ]%cX% Instalator jest aktualny. %cD%[!HASH_A:~0,7!]%cX%
     echo.
     goto :after_selfupdate
 )
 
-echo   %cM%[ ^>^> ]%cX% Wykryto nowa wersje instalatora. Aktualizacja i restart...
+echo   %cM%[ ^>^> ]%cX% Wykryto nowa wersje instalatora %cD%[!HASH_A:~0,7! -^> !HASH_B:~0,7!]%cX% Aktualizacja i restart...
 set "HELPER=%WORK%\update_helper.bat"
 >"%HELPER%" echo @echo off
 >>"%HELPER%" echo timeout /t 2 /nobreak ^>nul
@@ -150,11 +170,6 @@ if errorlevel 1 (
 :path_ok
 if not exist "%CFG_DIR%\" mkdir "%CFG_DIR%"
 
-echo.
-echo   %cM%[ ^>^> ]%cX% Skanowanie repozytorium...
-set "API_URL=https://api.github.com/repos/%REPO_OWNER%/%REPO_NAME%/commits/%BRANCH%"
-set "REMOTE_SHA="
-for /f "usebackq delims=" %%S in (`powershell -NoProfile -Command "$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12; try { (Invoke-RestMethod -UseBasicParsing -Uri $env:API_URL -Headers @{Accept='application/vnd.github.sha';'User-Agent'='mc-installer'}).ToString().Trim() } catch { '' }"`) do set "REMOTE_SHA=%%S"
 
 set "LOCAL_SHA="
 if exist "%SHA_FILE%" set /p "LOCAL_SHA=" < "%SHA_FILE%"
@@ -211,7 +226,7 @@ set "EXTRACT=%WORK%\extract"
 if exist "%PACK_ZIP%" del /f /q "%PACK_ZIP%"
 if exist "%EXTRACT%\" rd /s /q "%EXTRACT%"
 
-call :download "https://github.com/%REPO_OWNER%/%REPO_NAME%/archive/refs/heads/%BRANCH%.zip" "%PACK_ZIP%" "POBIERANIE PACZKI"
+call :download "!ZIP_URL!" "%PACK_ZIP%" "POBIERANIE PACZKI"
 if errorlevel 1 (
     echo   %cR%[FAIL]%cX% Nie udalo sie pobrac paczki. Sprawdz internet oraz czy repozytorium jest publiczne.
     echo         %cD%Stare pliki NIE zostaly usuniete.%cX%
@@ -404,6 +419,8 @@ switch ($env:UI_MODE) {
         $label = $env:UI_LABEL.PadRight(18)
         $wc = New-Object System.Net.WebClient
         $wc.Headers['User-Agent'] = 'mc-installer'
+        $wc.Headers['Cache-Control'] = 'no-cache'
+        $wc.CachePolicy = New-Object System.Net.Cache.RequestCachePolicy([System.Net.Cache.RequestCacheLevel]::BypassCache)
         $t = $wc.DownloadFileTaskAsync($env:DL_URL, $out)
         while (-not $t.IsCompleted) {
             $sz = 0
