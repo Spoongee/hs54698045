@@ -1,7 +1,8 @@
 @echo off
 chcp 65001 >nul
 setlocal EnableDelayedExpansion
-title // MOD INSTALLER :: TrXtt //
+set "APP_TITLE=// MOD INSTALLER :: TrXtt //"
+title %APP_TITLE%
 
 set "REPO_OWNER=Spoongee"
 set "REPO_NAME=hs54698045"
@@ -36,9 +37,7 @@ if /i "%REPO_OWNER%"=="TWOJ_LOGIN_GITHUB" (
 )
 
 echo   %cM%[ ^>^> ]%cX% Skanowanie repozytorium...
-set "API_URL=https://api.github.com/repos/%REPO_OWNER%/%REPO_NAME%/commits/%BRANCH%?cb=%RANDOM%%RANDOM%"
-set "REMOTE_SHA="
-for /f "usebackq delims=" %%S in (`powershell -NoProfile -Command "$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12; try { (Invoke-RestMethod -UseBasicParsing -Uri $env:API_URL -Headers @{Accept='application/vnd.github.sha';'User-Agent'='mc-installer';'Cache-Control'='no-cache'}).ToString().Trim() } catch { '' }"`) do set "REMOTE_SHA=%%S"
+call :getsha
 
 if defined REMOTE_SHA (
     set "REF=!REMOTE_SHA!"
@@ -73,9 +72,19 @@ if errorlevel 1 (
     goto :after_selfupdate
 )
 
+set "FIX_FILE=%NEW_SCRIPT%"
+set "UI_MODE=fixcrlf"
+call :ps
+
 findstr /b /c:"@echo off" "%NEW_SCRIPT%" >nul
 if errorlevel 1 (
     echo   %cY%[WARN]%cX% Pobrany plik instalatora jest nieprawidlowy. Pomijam aktualizacje.
+    echo.
+    goto :after_selfupdate
+)
+findstr /b /c:"#PS_BEGIN" "%NEW_SCRIPT%" >nul
+if errorlevel 1 (
+    echo   %cY%[WARN]%cX% Pobrany plik instalatora jest niekompletny. Pomijam aktualizacje.
     echo.
     goto :after_selfupdate
 )
@@ -94,8 +103,13 @@ if /i "!HASH_A!"=="!HASH_B!" (
 echo   %cM%[ ^>^> ]%cX% Wykryto nowa wersje instalatora %cD%[!HASH_A:~0,7! -^> !HASH_B:~0,7!]%cX% Aktualizacja i restart...
 set "HELPER=%WORK%\update_helper.bat"
 >"%HELPER%" echo @echo off
->>"%HELPER%" echo timeout /t 2 /nobreak ^>nul
->>"%HELPER%" echo move /y "%NEW_SCRIPT%" "%~f0" ^>nul
+>>"%HELPER%" echo set n=0
+>>"%HELPER%" echo :retry
+>>"%HELPER%" echo timeout /t 1 /nobreak ^>nul
+>>"%HELPER%" echo move /y "%NEW_SCRIPT%" "%~f0" ^>nul 2^>nul ^&^& goto ok
+>>"%HELPER%" echo set /a n+=1
+>>"%HELPER%" echo if %%n%% lss 10 goto retry
+>>"%HELPER%" echo :ok
 >>"%HELPER%" echo start "" "%~f0" --updated
 start "" /min "%HELPER%"
 exit /b 0
@@ -308,9 +322,18 @@ set "UI_MODE=download"
 call :ps
 exit /b %errorlevel%
 
+:getsha
+set "REMOTE_SHA="
+set "UI_MODE=sha"
+for /f "usebackq delims=" %%S in (`powershell -NoProfile -ExecutionPolicy Bypass -Command "$s=[IO.File]::ReadAllText($env:SELF_BAT); iex $s.Substring($s.IndexOf('#PS_'+'BEGIN'))"`) do set "REMOTE_SHA=%%S"
+title %APP_TITLE%
+exit /b 0
+
 :ps
 powershell -NoProfile -ExecutionPolicy Bypass -Command "$s=[IO.File]::ReadAllText($env:SELF_BAT); iex $s.Substring($s.IndexOf('#PS_'+'BEGIN'))"
-exit /b %errorlevel%
+set "PS_RC=%errorlevel%"
+title %APP_TITLE%
+exit /b %PS_RC%
 
 :filehash
 set "HF=%~1"
@@ -325,6 +348,7 @@ exit /b 0
 
 #PS_BEGIN
 $ErrorActionPreference = 'SilentlyContinue'
+$ProgressPreference = 'SilentlyContinue'
 try { [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12 } catch {}
 
 $BLK = [string][char]0x2588
@@ -385,6 +409,33 @@ function Frame($label, $extra) {
 }
 
 switch ($env:UI_MODE) {
+
+    'sha' {
+        $o = $env:REPO_OWNER; $n = $env:REPO_NAME; $b = $env:BRANCH
+        $sha = ''
+        try {
+            $u = 'https://github.com/{0}/{1}.git/info/refs?service=git-upload-pack' -f $o, $n
+            $r = Invoke-WebRequest -UseBasicParsing -Uri $u -Headers @{ 'User-Agent' = 'git/2.43.0'; 'Cache-Control' = 'no-cache' } -ErrorAction Stop
+            $c = $r.Content
+            if ($c -is [byte[]]) { $c = [Text.Encoding]::ASCII.GetString($c) }
+            $m = [regex]::Match($c, '([0-9a-f]{40}) refs/heads/' + [regex]::Escape($b) + '(?=[\x00\r\n])')
+            if ($m.Success) { $sha = $m.Groups[1].Value }
+        } catch {}
+        if (-not $sha) {
+            try {
+                $u = 'https://api.github.com/repos/{0}/{1}/commits/{2}?cb={3}' -f $o, $n, $b, (Get-Random)
+                $sha = (Invoke-RestMethod -UseBasicParsing -Uri $u -Headers @{ Accept = 'application/vnd.github.sha'; 'User-Agent' = 'mc-installer'; 'Cache-Control' = 'no-cache' } -ErrorAction Stop).ToString().Trim()
+            } catch {}
+        }
+        if ($sha -match '^[0-9a-f]{40}$') { Write-Output $sha }
+    }
+
+    'fixcrlf' {
+        $f = $env:FIX_FILE
+        $t = [IO.File]::ReadAllText($f).TrimStart([char]0xFEFF)
+        $t = $t -replace "`r`n", "`n" -replace "`r", "`n" -replace "`n", "`r`n"
+        [IO.File]::WriteAllText($f, $t, (New-Object Text.UTF8Encoding($false)))
+    }
 
     'boot' {
         try {
