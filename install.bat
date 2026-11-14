@@ -3,23 +3,15 @@ chcp 65001 >nul
 setlocal EnableDelayedExpansion
 title // MOD INSTALLER :: TrX //
 
-:: ==========================================================
-::  KONFIGURACJA GITHUB  (uzupelnij przed uzyciem)
-:: ==========================================================
 set "REPO_OWNER=Spoongee"
 set "REPO_NAME=hs54698045"
 set "BRANCH=main"
-:: Plik instalatora w glownym katalogu repo (do autoaktualizacji)
 set "SCRIPT_NAME=install.bat"
-:: Folder w repo, ktorego zawartosc trafia do folderu gry
-:: (np. mods, config, resourcepacks, shaderpacks, options.txt)
 set "PACK_DIR=pack"
-:: ==========================================================
 
 set "WORK=%TEMP%\mc_installer"
 if not exist "%WORK%\" mkdir "%WORK%"
 
-:: ---------- Kolory ANSI (neon: zolty / cyjan / magenta) ----------
 for /F "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & echo on & for %%b in (1) do rem"') do set "ESC=%%b"
 set "cY=%ESC%[93m"
 set "cC=%ESC%[96m"
@@ -30,7 +22,6 @@ set "cD=%ESC%[90m"
 set "cW=%ESC%[97m"
 set "cX=%ESC%[0m"
 
-:: ---------- Animowany baner startowy ----------
 set "SELF_BAT=%~f0"
 set "UI_FAST="
 if /i "%~1"=="--updated" set "UI_FAST=1"
@@ -46,9 +37,6 @@ if /i "%REPO_OWNER%"=="TWOJ_LOGIN_GITHUB" (
 
 set "RAW_URL=https://raw.githubusercontent.com/%REPO_OWNER%/%REPO_NAME%/%BRANCH%"
 
-:: ----------------------------------------------------------
-::  1. Autoaktualizacja instalatora
-:: ----------------------------------------------------------
 if /i "%~1"=="--updated" (
     echo   %cG%[ OK ]%cX% Instalator zaktualizowany do najnowszej wersji.
     echo.
@@ -65,7 +53,6 @@ if errorlevel 1 (
     goto :after_selfupdate
 )
 
-:: Zabezpieczenie: pobrany plik musi wygladac jak skrypt .bat
 findstr /b /c:"@echo off" "%NEW_SCRIPT%" >nul
 if errorlevel 1 (
     echo   %cY%[WARN]%cX% Pobrany plik instalatora jest nieprawidlowy. Pomijam aktualizacje.
@@ -95,9 +82,6 @@ exit /b 0
 
 :after_selfupdate
 
-:: ----------------------------------------------------------
-::  2. Sciezka do gry (zapisywana w Dokumentach)
-:: ----------------------------------------------------------
 set "DOCS="
 for /f "usebackq delims=" %%I in (`powershell -NoProfile -Command "[Environment]::GetFolderPath('MyDocuments')"`) do set "DOCS=%%I"
 if not defined DOCS set "DOCS=%USERPROFILE%\Documents"
@@ -107,9 +91,12 @@ set "CFG_FILE=%CFG_DIR%\sciezka_gry.txt"
 set "SHA_FILE=%CFG_DIR%\wersja_paczki.txt"
 
 set "GAME="
+set "REASK="
+set "REASK_OK="
 if exist "%CFG_FILE%" (
     set /p "GAME=" < "%CFG_FILE%"
 )
+if defined GAME set "REASK_OK=1"
 
 if defined GAME (
     if exist "!GAME!\" (
@@ -127,9 +114,21 @@ if defined GAME (
 
 :ask_path
 set "GAME="
-set /p "GAME=  %cM%[ ?? ]%cX% Sciezka do folderu z gra %cC%>%cX% "
+if defined REASK (
+    set /p "GAME=  %cM%[ ?? ]%cX% Nowa sciezka do gry %cD%(Enter = anuluj)%cX% %cC%>%cX% "
+) else (
+    set /p "GAME=  %cM%[ ?? ]%cX% Sciezka do folderu z gra %cC%>%cX% "
+)
 set "GAME=%GAME:"=%"
-if not defined GAME goto :ask_path
+if not defined GAME (
+    if defined REASK (
+        echo.
+        echo   %cY%[WARN]%cX% Anulowano.
+        call :wait
+        exit /b 0
+    )
+    goto :ask_path
+)
 if "%GAME:~-1%"=="\" set "GAME=%GAME:~0,-1%"
 
 if not exist "%GAME%\" (
@@ -151,9 +150,6 @@ if errorlevel 1 (
 :path_ok
 if not exist "%CFG_DIR%\" mkdir "%CFG_DIR%"
 
-:: ----------------------------------------------------------
-::  3. Sprawdzenie wersji paczki w repozytorium
-:: ----------------------------------------------------------
 echo.
 echo   %cM%[ >> ]%cX% Skanowanie repozytorium...
 set "API_URL=https://api.github.com/repos/%REPO_OWNER%/%REPO_NAME%/commits/%BRANCH%"
@@ -191,19 +187,24 @@ if not defined REMOTE_SHA (
 echo.
 echo   %cR%[WARN]%cX% Zostana USUNIETE jesli istnieja:
 echo         %cD%options.txt, mods, config, resourcepacks, shaderpacks%cX%
-echo         %cD%Aby zmienic sciezke gry, usun plik: !CFG_FILE!%cX%
+if defined REASK_OK echo         %cD%Wpisz N, aby podac inna sciezke gry.%cX%
 echo.
+set "OK="
 set /p "OK=  %cM%[ ?? ]%cX% Kontynuowac? %cD%(T/N)%cX% %cC%>%cX% "
 if /i not "%OK%"=="T" (
+    if defined REASK_OK (
+        echo.
+        echo   %cM%[ >> ]%cX% Podaj inna sciezke do gry. Pusty Enter anuluje.
+        echo.
+        set "REASK=1"
+        goto :ask_path
+    )
     echo.
     echo   %cY%[WARN]%cX% Anulowano.
     call :wait
     exit /b 0
 )
 
-:: ----------------------------------------------------------
-::  4. Pobranie paczki z GitHuba (przed usunieciem starych plikow)
-:: ----------------------------------------------------------
 echo.
 set "PACK_ZIP=%WORK%\repo.zip"
 set "EXTRACT=%WORK%\extract"
@@ -249,9 +250,6 @@ if not exist "!SRC!\" (
 )
 echo   %cG%[ OK ]%cX% Archiwum gotowe.
 
-:: ----------------------------------------------------------
-::  5. Usuniecie starych plikow i instalacja
-:: ----------------------------------------------------------
 echo.
 echo   %cM%[ >> ]%cX% Usuwanie starych plikow...
 if exist "%GAME%\options.txt" (
@@ -276,10 +274,8 @@ if errorlevel 1 (
     exit /b 1
 )
 
-:: Zapisz zainstalowana wersje paczki
 if defined REMOTE_SHA >"%SHA_FILE%" (echo !REMOTE_SHA!)
 
-:: Sprzatanie plikow tymczasowych
 if exist "%PACK_ZIP%" del /f /q "%PACK_ZIP%"
 if exist "%EXTRACT%\" rd /s /q "%EXTRACT%"
 
@@ -289,11 +285,6 @@ call :wait
 endlocal
 exit /b 0
 
-:: ==========================================================
-::  PODPROGRAMY
-:: ==========================================================
-
-:: Uzycie: call :download URL PLIK_WYJSCIOWY ETYKIETA
 :download
 set "DL_URL=%~1"
 set "DL_OUT=%~2"
@@ -302,12 +293,10 @@ set "UI_MODE=download"
 call :ps
 exit /b %errorlevel%
 
-:: Uruchamia kod PowerShell osadzony na koncu tego pliku (animacje)
 :ps
 powershell -NoProfile -ExecutionPolicy Bypass -Command "$s=[IO.File]::ReadAllText($env:SELF_BAT); iex $s.Substring($s.IndexOf('#PS_'+'BEGIN'))"
 exit /b %errorlevel%
 
-:: Uzycie: call :filehash PLIK NAZWA_ZMIENNEJ
 :filehash
 set "HF=%~1"
 for /f "usebackq delims=" %%H in (`powershell -NoProfile -Command "(Get-FileHash -LiteralPath $env:HF -Algorithm SHA256).Hash"`) do set "%~2=%%H"
@@ -319,12 +308,7 @@ echo   %cD%Nacisnij dowolny klawisz, aby zamknac...%cX%
 pause >nul
 exit /b 0
 
-:: ==========================================================
-::  KOD POWERSHELL (animacje) - nie usuwaj, nie przenos wyzej
-::  Wszystko ponizej markera jest wykonywane przez PowerShell,
-::  a nie przez cmd (cmd konczy dzialanie wczesniej).
-:: ==========================================================
-:: #PS_BEGIN
+#PS_BEGIN
 $ErrorActionPreference = 'SilentlyContinue'
 try { [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12 } catch {}
 
@@ -349,7 +333,6 @@ function Center($t) {
     return '|' + $t.PadLeft($l).PadRight($n) + '|'
 }
 
-# Efekt "decode": szum zamienia sie w tekst
 function Glitch($t, $c = 'Yellow') {
     $pool = '#@$%&*+=<>?/|0123456789ABCDEF'.ToCharArray()
     $r = New-Object System.Random
@@ -370,7 +353,6 @@ function Glitch($t, $c = 'Yellow') {
     Say ''
 }
 
-# Jedna klatka paska "skanera" (nieokreslony postep)
 function Frame($label, $extra) {
     $width = 22
     $seg = 5
@@ -390,7 +372,6 @@ function Frame($label, $extra) {
 switch ($env:UI_MODE) {
 
     'boot' {
-        # Wlacz obsluge sekwencji ANSI w tej konsoli (dla starszych Windows 10)
         try {
             Add-Type -Namespace Nx -Name Vt -MemberDefinition '[DllImport("kernel32.dll")] public static extern System.IntPtr GetStdHandle(int n); [DllImport("kernel32.dll")] public static extern bool GetConsoleMode(System.IntPtr h, out int m); [DllImport("kernel32.dll")] public static extern bool SetConsoleMode(System.IntPtr h, int m);'
             $h = [Nx.Vt]::GetStdHandle(-11)
