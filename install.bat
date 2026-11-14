@@ -479,7 +479,7 @@ switch ($env:UI_MODE) {
     'done' {
         Say ''
         Say "  $BAR" 'Green'
-        Glitch (Center 'ACCESS GRANTED  //  MODY ZAINSTALOWANE') 'Green'
+        Glitch (Center 'SUKCES  //  MODY ZAINSTALOWANE') 'Green'
         Say "  $BAR" 'Green'
     }
 }
