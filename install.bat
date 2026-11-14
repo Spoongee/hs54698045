@@ -82,7 +82,7 @@ if errorlevel 1 (
     echo.
     goto :after_selfupdate
 )
-findstr /b /c:"#PS_BEGIN" "%NEW_SCRIPT%" >nul
+findstr /b /c:"#PS_BEG" "%NEW_SCRIPT%" >nul
 if errorlevel 1 (
     echo   %cY%[WARN]%cX% Pobrany plik instalatora jest niekompletny. Pomijam aktualizacje.
     echo.
