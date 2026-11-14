@@ -71,7 +71,7 @@ if /i "!HASH_A!"=="!HASH_B!" (
     goto :after_selfupdate
 )
 
-echo   %cM%[ >> ]%cX% Wykryto nowa wersje instalatora. Aktualizacja i restart...
+echo   %cM%[ ^>^> ]%cX% Wykryto nowa wersje instalatora. Aktualizacja i restart...
 set "HELPER=%WORK%\update_helper.bat"
 >"%HELPER%" echo @echo off
 >>"%HELPER%" echo timeout /t 2 /nobreak ^>nul
@@ -115,9 +115,9 @@ if defined GAME (
 :ask_path
 set "GAME="
 if defined REASK (
-    set /p "GAME=  %cM%[ ?? ]%cX% Nowa sciezka do gry %cD%(Enter = anuluj)%cX% %cC%>%cX% "
+    set /p "GAME=%cX%  %cM%[ ?? ]%cX% Nowa sciezka do gry %cD%(Enter = anuluj)%cX% %cC%>%cX% "
 ) else (
-    set /p "GAME=  %cM%[ ?? ]%cX% Sciezka do folderu z gra %cC%>%cX% "
+    set /p "GAME=%cX%  %cM%[ ?? ]%cX% Sciezka do folderu z gra %cC%>%cX% "
 )
 set "GAME=%GAME:"=%"
 if not defined GAME (
@@ -151,7 +151,7 @@ if errorlevel 1 (
 if not exist "%CFG_DIR%\" mkdir "%CFG_DIR%"
 
 echo.
-echo   %cM%[ >> ]%cX% Skanowanie repozytorium...
+echo   %cM%[ ^>^> ]%cX% Skanowanie repozytorium...
 set "API_URL=https://api.github.com/repos/%REPO_OWNER%/%REPO_NAME%/commits/%BRANCH%"
 set "REMOTE_SHA="
 for /f "usebackq delims=" %%S in (`powershell -NoProfile -Command "$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12; try { (Invoke-RestMethod -UseBasicParsing -Uri $env:API_URL -Headers @{Accept='application/vnd.github.sha';'User-Agent'='mc-installer'}).ToString().Trim() } catch { '' }"`) do set "REMOTE_SHA=%%S"
@@ -190,11 +190,11 @@ echo         %cD%options.txt, mods, config, resourcepacks, shaderpacks%cX%
 if defined REASK_OK echo         %cD%Wpisz N, aby podac inna sciezke gry.%cX%
 echo.
 set "OK="
-set /p "OK=  %cM%[ ?? ]%cX% Kontynuowac? %cD%(T/N)%cX% %cC%>%cX% "
+set /p "OK=%cX%  %cM%[ ?? ]%cX% Kontynuowac? %cD%(T/N)%cX% %cC%>%cX% "
 if /i not "%OK%"=="T" (
     if defined REASK_OK (
         echo.
-        echo   %cM%[ >> ]%cX% Podaj inna sciezke do gry. Pusty Enter anuluje.
+        echo   %cM%[ ^>^> ]%cX% Podaj inna sciezke do gry. Pusty Enter anuluje.
         echo.
         set "REASK=1"
         goto :ask_path
@@ -219,7 +219,7 @@ if errorlevel 1 (
     exit /b 1
 )
 
-echo   %cM%[ >> ]%cX% Rozpakowywanie archiwum...
+echo   %cM%[ ^>^> ]%cX% Rozpakowywanie archiwum...
 powershell -NoProfile -ExecutionPolicy Bypass -Command "Expand-Archive -LiteralPath $env:PACK_ZIP -DestinationPath $env:EXTRACT -Force"
 if errorlevel 1 (
     echo   %cR%[FAIL]%cX% Nie udalo sie rozpakowac pobranego archiwum.
@@ -251,7 +251,7 @@ if not exist "!SRC!\" (
 echo   %cG%[ OK ]%cX% Archiwum gotowe.
 
 echo.
-echo   %cM%[ >> ]%cX% Usuwanie starych plikow...
+echo   %cM%[ ^>^> ]%cX% Usuwanie starych plikow...
 if exist "%GAME%\options.txt" (
     del /f /q "%GAME%\options.txt"
     echo   %cR%[ DEL ]%cX% options.txt
