@@ -1,5 +1,5 @@
 {
-	enabled: true,
+	enabled: false,
 	editorPausesGame: false,
 	autoDetectCameraMode: false,
 	viewMode: "FIRST_PERSON",
