@@ -11,6 +11,7 @@ set "SCRIPT_NAME=install.bat"
 set "PACK_DIR=pack"
 set "MANAGED=options.txt mods config resourcepacks shaderpacks"
 set "PRUNE=1"
+set "CONFIGS=options.txt config"
 
 set "WORK=%TEMP%\mc_installer"
 if not exist "%WORK%\" mkdir "%WORK%"
@@ -125,6 +126,7 @@ if not defined DOCS set "DOCS=%USERPROFILE%\Documents"
 set "CFG_DIR=%DOCS%\InstalatorModowMinecraft"
 set "CFG_FILE=%CFG_DIR%\sciezka_gry.txt"
 set "SHA_FILE=%CFG_DIR%\wersja_paczki.txt"
+set "CFGVER_FILE=%CFG_DIR%\wersja_configow.txt"
 
 set "GAME="
 set "REASK="
@@ -190,6 +192,15 @@ if not exist "%CFG_DIR%\" mkdir "%CFG_DIR%"
 set "LOCAL_SHA="
 if exist "%SHA_FILE%" set /p "LOCAL_SHA=" < "%SHA_FILE%"
 
+set "CFG_LOCAL="
+if exist "%CFGVER_FILE%" set /p "CFG_LOCAL=" < "%CFGVER_FILE%"
+set "CFG_LEGACY="
+if exist "%SHA_FILE%" set "CFG_LEGACY=1"
+if not defined CFG_DONE (
+    call :getver
+    set "CFG_DONE=1"
+)
+
 echo.
 echo   %cD%----------------------------------------------------------%cX%
 echo   %cC%CEL    %cD%:%cX% !GAME!
@@ -213,6 +224,18 @@ if not defined REMOTE_SHA (
         )
         echo   %cD%----------------------------------------------------------%cX%
     )
+)
+
+if "!CFG_OVERWRITE!"=="1" (
+    if defined CFG_LOCAL (
+        echo   %cC%KONFIG %cD%:%cX% %cM%nowa wersja%cX% %cD%[!CFG_LOCAL! -^> !CFG_REMOTE!]%cX% - zostana podmienione
+    ) else (
+        echo   %cC%KONFIG %cD%:%cX% %cM%instalacja%cX% - zostana wgrane domyslne
+    )
+) else if defined CFG_REMOTE (
+    echo   %cC%KONFIG %cD%:%cX% %cG%bez zmian%cX% %cD%[v!CFG_REMOTE!]%cX% - Twoje zostaja, dodam tylko brakujace
+) else (
+    echo   %cC%KONFIG %cD%:%cX% %cY%nieznane%cX% - Twoje zostaja, dodam tylko brakujace
 )
 
 echo.
@@ -296,6 +319,7 @@ if errorlevel 1 (
 )
 
 if defined REMOTE_SHA >"%SHA_FILE%" (echo !REMOTE_SHA!)
+if defined CFG_REMOTE >"%CFGVER_FILE%" (echo !CFG_REMOTE!)
 
 call :cleanup
 
@@ -309,6 +333,7 @@ exit /b 0
 echo.
 echo   %cG%[ OK ]%cX% Wszystkie pliki sa zgodne z repozytorium. Nic do pobrania.
 if defined REMOTE_SHA >"%SHA_FILE%" (echo !REMOTE_SHA!)
+if defined CFG_REMOTE >"%CFGVER_FILE%" (echo !CFG_REMOTE!)
 call :cleanup
 call :wait
 endlocal
@@ -374,6 +399,17 @@ exit /b %errorlevel%
 set "REMOTE_SHA="
 set "UI_MODE=sha"
 for /f "usebackq delims=" %%S in (`powershell -NoProfile -ExecutionPolicy Bypass -Command "$s=[IO.File]::ReadAllText($env:SELF_BAT); iex $s.Substring($s.IndexOf('#PS_'+'BEGIN'))"`) do set "REMOTE_SHA=%%S"
+title %APP_TITLE%
+exit /b 0
+
+:getver
+set "CFG_REMOTE="
+set "CFG_OVERWRITE=0"
+set "UI_MODE=ver"
+for /f "usebackq tokens=1,2" %%A in (`powershell -NoProfile -ExecutionPolicy Bypass -Command "$s=[IO.File]::ReadAllText($env:SELF_BAT); iex $s.Substring($s.IndexOf('#PS_'+'BEGIN'))"`) do (
+    if not "%%A"=="-" set "CFG_REMOTE=%%A"
+    set "CFG_OVERWRITE=%%B"
+)
 title %APP_TITLE%
 exit /b 0
 
@@ -459,6 +495,14 @@ function Frame($label, $extra) {
 
 $SEP = [string][IO.Path]::DirectorySeparatorChar
 $MAXP = 6
+$CFGS = @($env:CONFIGS -split '\s+' | Where-Object { $_ })
+
+function IsCfg($p) {
+    foreach ($c in $CFGS) {
+        if ($p -ieq $c -or $p.StartsWith($c + '/', [StringComparison]::OrdinalIgnoreCase)) { return $true }
+    }
+    return $false
+}
 
 function GitBlobSha($path) {
     $h = [Security.Cryptography.SHA1]::Create()
@@ -523,6 +567,27 @@ switch ($env:UI_MODE) {
             } catch {}
         }
         if ($sha -match '^[0-9a-f]{40}$') { Write-Output $sha }
+    }
+
+    'ver' {
+        $remote = $null
+        try {
+            $u = '{0}/.versionpck?cb={1}' -f $env:RAW_URL, (Get-Random)
+            $r = Invoke-WebRequest -UseBasicParsing -Uri $u -Headers @{ 'User-Agent' = 'mc-installer'; 'Cache-Control' = 'no-cache' } -ErrorAction Stop
+            $c = $r.Content
+            if ($c -is [byte[]]) { $c = [Text.Encoding]::UTF8.GetString($c) }
+            $c = ([string]$c).TrimStart([char]0xFEFF)
+            $m = [regex]::Match($c, '(?im)^\s*config\s*=\s*(\d+)\s*$')
+            if ($m.Success) { $remote = [int64]$m.Groups[1].Value }
+        } catch {}
+        if ($null -eq $remote) { Write-Output '- 0'; break }
+        $local = $null
+        $lt = ([string]$env:CFG_LOCAL).Trim()
+        if ($lt -match '^\d+$') { $local = [int64]$lt }
+        $ow = 0
+        if ($null -eq $local) { if ($env:CFG_LEGACY -ne '1') { $ow = 1 } }
+        elseif ($remote -gt $local) { $ow = 1 }
+        Write-Output ('{0} {1}' -f $remote, $ow)
     }
 
     'fixcrlf' {
@@ -602,6 +667,7 @@ switch ($env:UI_MODE) {
             $root = $zip.TrimEnd('\', '/')
             foreach ($f in (Get-ChildItem -LiteralPath $root -Recurse -File -Force)) {
                 $rel = $f.FullName.Substring($root.Length + 1).Replace($SEP, '/')
+                if ($rel -eq '.versionpck') { continue }
                 [void]$items.Add([pscustomobject]@{ path = $rel; sha = ''; size = [int64]$f.Length })
             }
             if ($items.Count -eq 0) { exit 1 }
@@ -631,6 +697,7 @@ switch ($env:UI_MODE) {
                 if ((Prop $e 'mode') -eq '120000') { continue }
                 $p = [string](Prop $e 'path')
                 if ($pre -and -not $p.StartsWith($pre, [StringComparison]::Ordinal)) { continue }
+                if ($p.Substring($pre.Length) -eq '.versionpck') { continue }
                 [void]$items.Add([pscustomobject]@{ path = $p.Substring($pre.Length); sha = [string](Prop $e 'sha'); size = [int64](Prop $e 'size') })
             }
             if ($items.Count -eq 0) { exit 3 }
@@ -640,6 +707,8 @@ switch ($env:UI_MODE) {
         $new = New-Object System.Collections.ArrayList
         $upd = New-Object System.Collections.ArrayList
         $same = 0
+        $kept = 0
+        $keepCfg = ($env:CFG_OVERWRITE -ne '1')
         $total = $items.Count
         $label = 'SPRAWDZANIE PLIKOW'.PadRight(18)
         $i = 0
@@ -649,6 +718,7 @@ switch ($env:UI_MODE) {
             Frame $label ('{0}/{1}' -f $i, $total)
             $lp = LocalPath $game $it.path
             if (-not [IO.File]::Exists($lp)) { [void]$new.Add($it); continue }
+            if ($keepCfg -and (IsCfg $it.path)) { $kept++; continue }
             if ((New-Object IO.FileInfo $lp).Length -ne $it.size) { [void]$upd.Add($it); continue }
             $rs = $it.sha
             if (-not $rs) { $rs = GitBlobSha (LocalPath $zip $it.path) }
@@ -660,11 +730,11 @@ switch ($env:UI_MODE) {
             foreach ($m in @($env:MANAGED -split '\s+' | Where-Object { $_ })) {
                 $mp = Join-Path $game $m
                 if ([IO.File]::Exists($mp)) {
-                    if (-not $set.Contains($m)) { [void]$del.Add($mp) }
+                    if (-not $set.Contains($m) -and -not ($keepCfg -and (IsCfg $m))) { [void]$del.Add($mp) }
                 } elseif ([IO.Directory]::Exists($mp)) {
                     foreach ($f in (Get-ChildItem -LiteralPath $mp -Recurse -File -Force)) {
                         $rel = $f.FullName.Substring($game.Length + 1).Replace($SEP, '/')
-                        if (-not $set.Contains($rel)) { [void]$del.Add($f.FullName) }
+                        if (-not $set.Contains($rel) -and -not ($keepCfg -and (IsCfg $rel))) { [void]$del.Add($f.FullName) }
                     }
                 }
             }
@@ -687,6 +757,7 @@ switch ($env:UI_MODE) {
         Put '         ZMIENIONE    : ' 'Cyan'; Say ('{0}  [{1}]' -f $upd.Count, (Mb $updBytes)) 'Yellow'
         Put '         DO USUNIECIA : ' 'Cyan'; Say ('{0}' -f $del.Count) 'Red'
         Put '         BEZ ZMIAN    : ' 'Cyan'; Say ('{0}' -f $same) 'DarkGray'
+        if ($keepCfg -and $kept -gt 0) { Put '         ZACHOWANE    : ' 'Cyan'; Say ('{0}  [twoje konfigi]' -f $kept) 'DarkGray' }
         Say ''
         ListItems 'NEW' 'Green' @($new | ForEach-Object { $_.path })
         ListItems 'UPD' 'Yellow' @($upd | ForEach-Object { $_.path })
