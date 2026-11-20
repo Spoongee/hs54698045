@@ -1,0 +1,7 @@
+# Plik sterujacy instalatorem. Wrzuc go do ROOTA repo (obok install.bat).
+#
+# config = numer rewizji konfigow.
+#   Zwieksz go (np. 1 -> 2), gdy chcesz, zeby instalator PODMIENIL konfigi graczom.
+#   Gdy numer sie nie zmienil, konfigi graczy zostaja nietkniete,
+#   a instalator dodaje tylko te, ktorych jeszcze nie maja.
+config=1
