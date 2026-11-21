@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "dimStrength": 75,
+  "matchById": true,
+  "boxOffsetX": 0,
+  "boxTop": 6,
+  "boxScale": 1.0,
+  "supportMessageShown": true
+}

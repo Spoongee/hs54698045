@@ -25,9 +25,39 @@
     "net.irisshaders.iris.gui.screen.ShaderPackScreen": true,
     "mezz.jei.gui.recipes.RecipesGui": true,
     "xaero.common.gui.GuiMinimapMiscSettings": true,
-    "dev.isxander.yacl3.gui.controllers.PopupControllerScreen": true
+    "dev.isxander.yacl3.gui.controllers.PopupControllerScreen": true,
+    "net.satisfy.vinery.client.gui.FermentationBarrelGui": true,
+    "com.aetherteam.aether.client.gui.screen.inventory.LoreBookScreen": true,
+    "xaero.map.gui.GuiMap": true,
+    "com.minecraftserverzone.weaponmaster.gui.WeaponMasterScreen": true,
+    "com.minecraftserverzone.weaponmaster.gui.DetailedSettingsScreen": true,
+    "com.minecraftserverzone.weaponmaster.gui.EditTextListScreen": true,
+    "com.tiviacz.travelersbackpack.client.screens.BackpackScreen": true,
+    "com.tiviacz.travelersbackpack.client.screens.BackpackSettingsScreen": true,
+    "io.wispforest.accessories.client.gui.AccessoriesScreen": true,
+    "com.tiviacz.travelersbackpack.client.screens.ToolsScreen": true,
+    "xaero.pac.client.gui.MainMenu": true,
+    "com.t2pellet.teams.client.ui.menu.TeamsLonelyScreen": true,
+    "dlovin.inventoryhud.config.InGameConfigScreen": true,
+    "org.anti_ad.mc.ipnext.gui.ConfigScreen": true,
+    "org.anti_ad.mc.libipn.gui.ConfigScreen": true,
+    "slexom.animal_feeding_trough.platform.common.screen.FeedingTroughScreen": true,
+    "net.p3pp3rf1y.sophisticatedstorage.client.gui.StorageScreen": true,
+    "com.aetherteam.aether.client.gui.screen.ValkyrieQueenDialogueScreen": true,
+    "com.tiviacz.travelertoolbelt.client.screens.BeltScreen": true,
+    "net.emilsg.clutter.screen.CardboardBoxScreen": true
   },
   "hideBackground": {
-    "mezz.jei.gui.recipes.RecipesGui": true
+    "mezz.jei.gui.recipes.RecipesGui": true,
+    "net.satisfy.vinery.client.gui.FermentationBarrelGui": true,
+    "com.aetherteam.aether.client.gui.screen.inventory.LoreBookScreen": true,
+    "com.tiviacz.travelersbackpack.client.screens.BackpackScreen": true,
+    "com.tiviacz.travelersbackpack.client.screens.BackpackSettingsScreen": true,
+    "io.wispforest.accessories.client.gui.AccessoriesScreen": true,
+    "xaero.pac.client.gui.MainMenu": true,
+    "dev.ftb.mods.ftblibrary.ui.ScreenWrapper": true,
+    "slexom.animal_feeding_trough.platform.common.screen.FeedingTroughScreen": true,
+    "net.p3pp3rf1y.sophisticatedstorage.client.gui.StorageScreen": true,
+    "net.emilsg.clutter.screen.CardboardBoxScreen": true
   }
 }

@@ -125,7 +125,8 @@
 		"com.ezzenix.emlib.config.ConfigScreen",
 		"org.anti_ad.mc.ipnext.gui.ConfigScreen",
 		"com.kubepixel.pickloot.client.LootConfigHubScreen",
-		"org.anti_ad.mc.libipn.gui.ConfigScreen"
+		"org.anti_ad.mc.libipn.gui.ConfigScreen",
+		"net.minecraft.class_408"
 	],
 	disableFirstPerson: false,
 	disableThirdPerson: false,
@@ -136,7 +137,7 @@
 	screenOverPlayerAlpha: 50,
 	useLinearFiltering: true,
 	useAnisotropicFiltering: true,
-	hideHandsInFirstPerson: false,
+	hideHandsInFirstPerson: true,
 	hideShieldInFirstPerson: true,
 	armSwing: false,
 	handPokeAnimation: true,

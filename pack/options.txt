@@ -23,7 +23,7 @@ toggleSprint:false
 darkMojangStudiosBackground:false
 hideLightningFlashes:false
 mouseSensitivity:0.5
-fov:0.5
+fov:1.0
 screenEffectScale:1.0
 fovEffectScale:1.0
 darknessEffectScale:1.0
@@ -31,7 +31,7 @@ glintSpeed:0.4507042253521127
 glintStrength:0.7535211267605634
 damageTiltStrength:1.0
 highContrast:false
-gamma:0.5
+gamma:1.0
 renderDistance:10
 simulationDistance:8
 entityDistanceScaling:1.0
@@ -144,10 +144,9 @@ key_key.azurelib.fire:key.keyboard.unknown
 key_bedrockIfy.key.settings:key.keyboard.unknown
 key_keybinds.bettercombat.feint:key.keyboard.unknown
 key_keybinds.bettercombat.toggle_mine_with_weapons:key.keyboard.unknown
+key_key.bettersearch.open_config:key.keyboard.o
 key_key.bridgingmod.toggle_bridging:key.keyboard.comma
 key_key.carry.desc:key.keyboard.left.shift
-key_key.cinematic.sit:key.keyboard.h
-key_key.cinematic.look:key.keyboard.unknown
 key_key.cinematic_respawn.skip_cinematic:key.keyboard.space
 key_key.clutter.pet:key.keyboard.unknown
 key_key.configured.open_mod_list:key.keyboard.unknown
@@ -183,8 +182,6 @@ key_key.inventoryhud.togglepot:key.keyboard.unknown
 key_key.inventoryhud.togglearm:key.keyboard.unknown
 key_key.inventoryhud.toggleall:key.keyboard.unknown
 key_keybind.invmove.toggleMove:key.keyboard.unknown
-key_key.itemsearch.search:key.keyboard.f
-key_key.itemsearch.open_config:key.keyboard.slash
 key_key.jade.config:key.keyboard.keypad.0
 key_key.jade.show_overlay:key.keyboard.keypad.1
 key_key.jade.toggle_liquid:key.keyboard.keypad.2
@@ -261,13 +258,13 @@ key_key.presencefootsteps.toggle:key.keyboard.unknown
 key_key.toggleVisualItemContents:key.keyboard.unknown
 key_key.toggleSelectedItemTooltips:key.keyboard.unknown
 key_key.toggleCarriedItemTooltips:key.keyboard.unknown
-key_key.cycleLeft:key.keyboard.g
-key_key.cycleRight:key.keyboard.h
-key_railways.keyinfo.bogey_menu:key.keyboard.left.alt
-key_railways.keyinfo.cycle_menu:key.keyboard.left.alt
+key_key.cycleLeft:key.keyboard.unknown
+key_key.cycleRight:key.keyboard.unknown
+key_railways.keyinfo.bogey_menu:key.keyboard.unknown
+key_railways.keyinfo.cycle_menu:key.keyboard.unknown
 key_key.screenshot_viewer.open_screenshots_screen:key.keyboard.unknown
 key_key.showmeyourskin.open_settings:key.keyboard.k
-key_key.showmeyourskin.global_toggle:key.keyboard.j
+key_key.showmeyourskin.global_toggle:key.keyboard.unknown
 key_keybind.sophisticatedbackpacks.open_backpack:key.keyboard.unknown
 key_keybind.sophisticatedbackpacks.inventory_interaction:key.keyboard.unknown
 key_keybind.sophisticatedbackpacks.tool_swap:key.keyboard.unknown
@@ -281,8 +278,8 @@ key_keybind.sophisticatedstorage.sort:key.keyboard.0
 key_key.spatial-gui.open_config:key.keyboard.unknown
 key_key.spatial-gui.reload_profiles:key.keyboard.unknown
 key_key.spatial-gui.open_editor:key.keyboard.unknown
-key_key.spatial-gui.toggle_mouse_free:key.mouse.left
-key_key.spatial-gui.open_profile_picker:key.keyboard.grave.accent
+key_key.spatial-gui.toggle_mouse_free:key.keyboard.unknown
+key_key.spatial-gui.open_profile_picker:key.keyboard.unknown
 key_key.teams.accept:key.keyboard.right.bracket
 key_key.teams.reject:key.keyboard.left.bracket
 key_key.teams.toggle_hud:key.keyboard.end
@@ -297,7 +294,7 @@ key_key.trashslot.delete:key.keyboard.delete
 key_key.travelersbackpack.inventory:key.keyboard.b
 key_key.travelersbackpack.sort:key.keyboard.unknown
 key_key.travelersbackpack.ability:key.keyboard.unknown
-key_key.travelersbackpack.cycle_tool:key.keyboard.z
+key_key.travelersbackpack.cycle_tool:key.keyboard.t
 key_key.travelersbackpack.toggle_upgrade_0:key.keyboard.unknown
 key_key.travelersbackpack.toggle_upgrade_1:key.keyboard.unknown
 key_key.travelersbackpack.toggle_upgrade_2:key.keyboard.unknown
@@ -313,7 +310,7 @@ key_key.voice_chat_settings:key.keyboard.unknown
 key_key.voice_chat_group:key.keyboard.unknown
 key_key.voice_chat_toggle_recording:key.keyboard.unknown
 key_key.voice_chat_adjust_volumes:key.keyboard.unknown
-key_key.weaponmaster_ydm.opengui:key.keyboard.v
+key_key.weaponmaster_ydm.opengui:key.keyboard.unknown
 key_gui.xaero_minimap_settings:key.keyboard.y
 key_gui.xaero_minimap_server_profiles:key.keyboard.unknown
 key_gui.xaero_zoom_in:key.keyboard.unknown

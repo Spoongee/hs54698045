@@ -3,6 +3,10 @@
         "highlight_foused_items": {
             "value": false
         },
+        "highlight_clicking_slot": false,
+        "sort_at_cursor": false,
+        "move_all_at_cursor": false,
+        "ignore_durability": false,
         "first_run": false
     },
     "GuiSettings": {
